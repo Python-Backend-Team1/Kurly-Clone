@@ -29,14 +29,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users',
-#     'product',
+#     'users',
+    'product',
 #     'category',
 #     'orders',
 #     'orderitem',
-#     'reviews'
-#     'cart'
-#     'cartitem'
+#     'reviews',
+#     'cart',
+#     'cartitem',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +49,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'kurlyclone.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +67,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'main.wsgi.application'
+WSGI_APPLICATION = 'kurlyclone.wsgi.application'
 
 # Database
 # Use environment variables to set the database configuration

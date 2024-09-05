@@ -1,0 +1,13 @@
+from django.contrib import admin
+from product.models import Category, Product
+
+# Register your models here.
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['category_id', 'name']
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ['product_id', 'name', 'price', 'stock_quantity']
+    list_editable = ['price', 'stock_quantity']
