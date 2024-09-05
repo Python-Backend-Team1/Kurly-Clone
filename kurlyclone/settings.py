@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'product',
+#     'product',
 #     'category',
 #     'orders',
 #     'orderitem',
@@ -49,12 +49,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'main.urls'
+ROOT_URLCONF = 'kurlyclone.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,13 +67,15 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'main.wsgi.application'
+WSGI_APPLICATION = 'kurlyclone.wsgi.application'
 
 # Database
 # Use environment variables to set the database configuration
 DATABASES = {
     'default': env.db(default='sqlite:///db.sqlite3')
 }
+
+AUTH_USER_MODEL = 'users.CustomUser'        #사용자 커스텀 모델 
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

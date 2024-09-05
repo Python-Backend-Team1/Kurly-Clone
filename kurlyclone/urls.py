@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users.views import login_view, home_view,signup_view                               # home_view 임포트 추가
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
+    path('login/', login_view, name='login'),
+    path('home/', home_view, name='home'),
+    path('signup/', signup_view, name='signup'),                             # 회원가입 URL 추가
+    path('', home_view, name='home'),  # 루트 URL 패턴 추가
+
 ]
