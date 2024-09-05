@@ -3,12 +3,33 @@ from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
 from django.shortcuts import render
 from .forms import UserLoginForm, UserSignUpForm
+from django.core.mail import send_mail                 #아이디비번찾기관련
+from django.contrib.auth.models import User              #아이디비번찾기관련
+from django.conf import settings                       #아이디비번찾기관련
 
 
 
 def home_view(request):
     return render(request, 'home.html')
 
+
+def find_username_view(request):                        #아이디찾기
+    if request.method == 'POST':
+        email = request.POST['email']
+        try:
+            user = User.objects.get(email=email)
+            send_mail(
+                'Your Username',
+                f'Your username is {user.username}',
+                settings.DEFAULT_FROM_EMAIL,
+                [email],
+                fail_silently=False,
+            )
+            return render(request, 'users/find_username_done.html')
+        except User.DoesNotExist:
+            return render(request, 'users/find_username.html', {'error': 'Email not found'})
+
+    return render(request, 'users/find_username.html')
 
 
 
