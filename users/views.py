@@ -33,7 +33,7 @@ def signup_view(request):                                           #회원가�
         if form.is_valid():
             user = form.save()
             login(request, user)  # 회원가입 후 자동 로그인
-            return redirect('home')  # 회원가입 후 홈으로 이동
+            return redirect('login') #회원가입 후 로그인html로 
     else:
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
