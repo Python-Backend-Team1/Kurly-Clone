@@ -26,11 +26,12 @@ class Product(models.Model):
     product_id = models.IntegerField(unique=True)
     name = models.CharField(max_length=200)
     image = models.ImageField(blank=True)
+    unit = models.CharField(max_length=100, default="1팩")      # 판매단위, "1팩"은 디폴트 값
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=0)
-    stock_quantity = models.IntegerField(blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    # stock_quantity = models.IntegerField(blank=True)          # 불필요할 거 같아 일단 비활성화
+    # created_at = models.DateTimeField(auto_now_add=True)      # 위와 같음
+    # updated_at = models.DateTimeField(auto_now=True)          # 위와 같음
 
     class Meta:
         ordering = ['product_id']
