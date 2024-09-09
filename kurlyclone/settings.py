@@ -54,7 +54,7 @@ ROOT_URLCONF = 'kurlyclone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +74,8 @@ WSGI_APPLICATION = 'kurlyclone.wsgi.application'
 DATABASES = {
     'default': env.db(default='sqlite:///db.sqlite3')
 }
+
+AUTH_USER_MODEL = 'users.CumstomUser'         # 사용자 커스텀 모델
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -99,7 +101,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files (Uploaded by users)
 MEDIA_URL = '/media/'
