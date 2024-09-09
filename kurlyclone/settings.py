@@ -101,7 +101,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # 프로젝트 루트의 static 폴더 경로
+]
 
 # Media files (Uploaded by users)
 MEDIA_URL = '/media/'
