@@ -1,91 +1,81 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
+/* styles.css */
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.cart-section {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.cart-items {
+    width: 65%;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cart-items ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    position: relative;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
 }
 
-/* 오른쪽 상단에 배치하는 스타일 */
-.top-right-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+.item-info {
+    display: flex;
+    align-items: center;
 }
 
-.top-right-buttons a {
+.product-image {
+    width: 80px;
+    margin-right: 20px;
+}
+
+.item-details {
+    font-size: 16px;
+}
+
+.item-actions {
+    display: flex;
+    align-items: center;
+}
+
+.item-actions form {
     margin-left: 10px;
 }
 
-.top-right-buttons button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #6b5b95;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.top-right-buttons button:hover {
-    background-color: #5a4878;
-}
-
-form {
-    background-color: #fff;
+.order-summary {
+    width: 30%;
+    background-color: #f9f9f9;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
 }
 
-.form-group {
-    margin-bottom: 15px;
+.order-summary h2 {
+    font-size: 20px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+.order-summary p {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.form-group input,
-.form-group select,
-.form-group button {
+.checkout-btn {
     width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-.form-group input[type="radio"] {
-    width: auto;
-    margin-right: 5px;
-}
-
-button {
-    background-color: #6b5b95;
+    padding: 15px;
+    background-color: #5f0080;
     color: white;
     border: none;
-    padding: 10px;
     border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
-}
-
-button:hover {
-    background-color: #5a4878;
-}
-
-.gender-options {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.gender-options label {
-    margin-left: 5px;
-    margin-right: 15px;
 }

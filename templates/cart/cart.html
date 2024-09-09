@@ -1,0 +1,58 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>장바구니</h1>
+
+        <div class="cart-section">
+            <!-- 왼쪽 장바구니 리스트 -->
+            <div class="cart-items">
+                <h2>장바구니 상품 ({{ cart_items.count }}개)</h2>
+                <ul>
+                    {% for item in cart_items %}
+                    <li class="cart-item">
+                        <div class="item-info">
+                            <img src="{{ item.product.image_url }}" alt="{{ item.product.name }}" class="product-image">
+                            <div class="item-details">
+                                <p>{{ item.product.name }}</p>
+                                <p>{{ item.quantity }} x {{ item.product.price }}원</p>
+                            </div>
+                        </div>
+                        <div class="item-actions">
+                            <form method="post" action="{% url 'update_cart_item' item.id %}">
+                                {% csrf_token %}
+                                <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
+                                <button type="submit">수량 변경</button>
+                            </form>
+                            <form method="post" action="{% url 'remove_cart_item' item.id %}">
+                                {% csrf_token %}
+                                <button type="submit">삭제</button>
+                            </form>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <!-- 오른쪽 결제 요약 -->
+            <div class="order-summary">
+                <h2>결제금액</h2>
+                <p>상품금액: {{ total_price }}원</p>
+                <p>할인금액: {{ discount_price }}원</p>
+                <p>배송비: {{ shipping_fee }}원</p>
+                <hr>
+                <p>결제예정금액: {{ final_price }}원</p>
+                <button class="checkout-btn">로그인 후 결제하기</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
