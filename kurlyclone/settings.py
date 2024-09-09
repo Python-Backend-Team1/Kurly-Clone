@@ -51,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'kurlyclone.urls'
+LOGOUT_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {
