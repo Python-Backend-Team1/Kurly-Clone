@@ -7,7 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
 
-class CustomPasswordResetForm(PasswordResetForm):
+class CustomPasswordResetForm(PasswordResetForm):                                   
     username = forms.CharField(max_length=150, required=True, label="아이디")
 
     def clean(self):
@@ -22,7 +22,7 @@ class CustomPasswordResetForm(PasswordResetForm):
         return cleaned_data  # 비밀번호 찾기 아이디이메일
 
 
-class UserSignUpForm(UserCreationForm):
+class UserSignUpForm(UserCreationForm):                                                    #회원가입 
     email = forms.EmailField(required=True)
     name = forms.CharField(max_length=100, required=True, label="이름")
     phone = forms.CharField(max_length=15, required=True, label="휴대폰")
@@ -47,8 +47,8 @@ class UserSignUpForm(UserCreationForm):
             user.save()
         return user
 
-
-class UserLoginForm(AuthenticationForm):
+ 
+class UserLoginForm(AuthenticationForm):                         # 사용자 로그인 폼
     username = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Username'
@@ -56,4 +56,4 @@ class UserLoginForm(AuthenticationForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'class': 'form-control',
         'placeholder': 'Password'
-    }))  # 사용자 인증 폼
+    }))  
