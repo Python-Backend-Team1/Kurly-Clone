@@ -2,35 +2,41 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
 from django.shortcuts import render
-from .forms import UserLoginForm, UserSignUpForm
-from django.core.mail import send_mail                 #아이디비번찾기관련
-from django.contrib.auth.models import User              #아이디비번찾기관련
-from django.conf import settings                       #아이디비번찾기관련
+from .forms import UserLoginForm, UserSignUpForm 
+from django.core.mail import send_mail            #아이디찾기
+from django.contrib.auth.models import User        #아이디찾기
+from django.conf import settings                   #아이디찾기
+from .forms import CustomPasswordResetForm                    #비밀번호 찾기 아이디 동반
+from django.contrib.auth.views import PasswordResetView      #비밀번호 찾기 아이디 동반
+from django.contrib.auth import get_user_model                  #아이디찾기 오류
 
 
 
 def home_view(request):
     return render(request, 'home.html')
 
-
-def find_username_view(request):                        #아이디찾기
+def find_username_view(request):
     if request.method == 'POST':
         email = request.POST['email']
         try:
-            user = User.objects.get(email=email)
-            send_mail(
-                'Your Username',
-                f'Your username is {user.username}',
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
-            )
-            return render(request, 'users/find_username_done.html')
-        except User.DoesNotExist:
-            return render(request, 'users/find_username.html', {'error': 'Email not found'})
+            # 이메일과 일치하는 첫 번째 사용자만 선택
+            user = get_user_model().objects.filter(email=email).first()
+            if user:
+                send_mail(
+                    'Your Username',
+                    f'Your username is {user.username}',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False,
+                )
+                return render(request, 'users/find_username_done.html')
+            else:
+                return render(request, 'users/find_username.html', {'error': 'Email not found'})
+
+        except Exception as e:
+            return render(request, 'users/find_username.html', {'error': str(e)})
 
     return render(request, 'users/find_username.html')
-
 
 
 def login_view(request):
@@ -48,13 +54,18 @@ def login_view(request):
 
 
 
-def signup_view(request):                                           #회원가입폼
+def signup_view(request):
     if request.method == 'POST':
         form = UserSignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request, user)  # 회원가입 후 자동 로그인
-            return redirect('login') #회원가입 후 로그인html로 
+            form.save()
+            return redirect('login')
     else:
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
+
+
+class CustomPasswordResetView(PasswordResetView):                        #비밀번호찾기 아이디동반
+    form_class = CustomPasswordResetForm
+    template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
+    success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL

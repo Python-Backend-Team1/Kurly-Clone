@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+<!DOCTYPE html>                 <!-- 아이디 찾기 페이지-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find Username</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>아이디 찾기</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="email">이메일 주소:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">이메일 전송</button>
+            <!-- 홈 페이지로 이동하는 버튼 추가 -->
+            <a href="{% url 'home' %}" class="btn btn-secondary">홈으로</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,3 +52,4 @@
 </div>
 </body>
 </html
+>>>>>>> 8e52c3c946e70bde7fcd34f01bbeb175bf45903d
