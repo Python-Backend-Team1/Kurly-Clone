@@ -12,6 +12,7 @@ from django.contrib.auth import get_user_model                  #아이디찾기
 
 
 
+
 def home_view(request):
     return render(request, 'home.html')
 
@@ -64,6 +65,9 @@ def signup_view(request):
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
 
+def mypage_view(request):                                            #마이 페이지
+    return render(request, 'users/mypage.html')
+ 
 
 class CustomPasswordResetView(PasswordResetView):                        #비밀번호찾기 아이디동반
     form_class = CustomPasswordResetForm
