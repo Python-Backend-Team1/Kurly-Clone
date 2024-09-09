@@ -16,21 +16,33 @@ class Product(models.Model):
     
 # 주문 모델
 class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # User 모델 대신 AUTH_USER_MODEL 사용
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    status = models.CharField(max_length=10, choices=(('pending', 'Pending'), ('completed', 'Completed'), ('cancelled', 'Cancelled')), default='pending')
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # 주문한 사용자
+    total_price = models.DecimalField(max_digits=10, decimal_places=2)  # 총 주문 금액
+    shipping_address = models.CharField(max_length=255)  # 배송 주소
+    order_status = models.CharField(
+        max_length=20,
+        choices=(
+            ('pending', 'Pending'),
+            ('processing', 'Processing'),
+            ('shipped', 'Shipped'),
+            ('delivered', 'Delivered'),
+            ('cancelled', 'Cancelled')
+        ),
+        default='pending'
+    )
+    created_at = models.DateTimeField(auto_now_add=True)  # 주문 생성 시간
+    updated_at = models.DateTimeField(auto_now=True)  # 주문 정보 수정 시간
 
     def __str__(self):
         return f"Order {self.id} by {self.user.username}"
 
 # 주문 항목 모델
 class OrderItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    order_item_id = models.AutoField(primary_key=True)  # 자동 생성되는 기본 키로 설정
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='items')  # order_id
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)  # product_id
+    quantity = models.PositiveIntegerField()  # 수량
+    price = models.DecimalField(max_digits=10, decimal_places=2)  # 가격
 
     def __str__(self):
         return f"{self.quantity} x {self.product.name}"
