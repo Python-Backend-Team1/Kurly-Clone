@@ -75,7 +75,7 @@ DATABASES = {
     'default': env.db(default='sqlite:///db.sqlite3')
 }
 
-AUTH_USER_MODEL = 'users.CumstomUser'         # 사용자 커스텀 모델
+# AUTH_USER_MODEL = 'users.CumstomUser'         # 사용자 커스텀 모델
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
