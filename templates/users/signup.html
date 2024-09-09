@@ -1,19 +1,73 @@
-<!-- templates/users/signup.html -->
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>                                       <!--  회원가입  html , css연결-->
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>회원가입</title>
+    <!-- Static 태그 로드 -->
+    {% load static %}
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h2>Sign Up</h2>
-    <form method="POST">
+    <form method="post" action="{% url 'signup' %}">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
         
-    </form>
-    <p>Already have an account? <a href="{% url 'login' %}">Log In</a></p>
+        <div class="form-group">
+            <label for="username">아이디*</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password1">비밀번호*</label>
+            <input type="password" id="password1" name="password1" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="password2">비밀번호 확인*</label>
+            <input type="password" id="password2" name="password2" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">이름*</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">이메일*</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">휴대폰*</label>
+            <input type="text" id="phone" name="phone" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="address">주소*</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        
+        <div class="form-group">
+            <label>성별*</label>
+            <div class="gender-options">
+                <input type="radio" id="male" name="gender" value="남자">
+                <label for="male">남자</label>
+                <input type="radio" id="female" name="gender" value="여자">
+                <label for="female">여자</label>
+                <input type="radio" id="none" name="gender" value="선택안함" checked>
+                <label for="none">선택안함</label>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="birthdate">생년월일</label>
+            <input type="date" id="birthdate" name="birthdate">
+        </div>
+        
+        <div class="form-group">
+            <button type="submit">회원가입</button>
+        </div>
+    </form> 
 </body>
 </html>
