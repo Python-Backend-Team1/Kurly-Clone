@@ -17,7 +17,11 @@
         {% if error %}
             <p style="color: red;">{{ error }}</p>
         {% endif %}
-        <button type="submit" class="btn btn-primary">아이디 찾기</button>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">이메일 전송</button>
+            <!-- 홈 페이지로 이동하는 버튼 추가 -->
+            <a href="{% url 'home' %}" class="btn btn-secondary">홈으로</a>
+        </div>
     </form>
 </div>
 </body>
