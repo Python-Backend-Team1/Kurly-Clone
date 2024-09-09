@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
@@ -70,7 +70,7 @@ class CustomPasswordResetView(PasswordResetView):                        #비밀
     form_class = CustomPasswordResetForm
     template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
     success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL
-=======
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
@@ -131,4 +131,4 @@ def signup_view(request):                                           #회원가�
     else:
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
->>>>>>> 8e52c3c946e70bde7fcd34f01bbeb175bf45903d
+

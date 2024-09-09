@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # users/urls.py
 
 from django.urls import path
@@ -12,7 +12,7 @@ urlpatterns = [
     path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),  # 여기서 변경
     path('', home_view, name='home'), #기본 주소
 ]
-=======
+
 # users/urls.py
 
 from django.urls import path
@@ -24,4 +24,3 @@ urlpatterns = [
     path('signup/', signup_view, name='signup'),  # 회원가입 URL
     path('find-username/', find_username_view, name='find_username'),
 ]
->>>>>>> 8e52c3c946e70bde7fcd34f01bbeb175bf45903d
