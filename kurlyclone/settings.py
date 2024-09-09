@@ -30,10 +30,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-#     'product',
+    'product',
 #     'category',
 #     'orders',
 #     'orderitem',
+#     'reviews',
+#     'cart',
+#     'cartitem',
 #     'reviews'
     'cart'
 #     'cartitem'
@@ -74,8 +77,7 @@ WSGI_APPLICATION = 'kurlyclone.wsgi.application'
 DATABASES = {
     'default': env.db(default='sqlite:///db.sqlite3')
 }
-
-AUTH_USER_MODEL = 'users.CustomUser'        #사용자 커스텀 모델 
+AUTH_USER_MODEL = 'users.CustomUser'
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [

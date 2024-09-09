@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
@@ -69,3 +73,9 @@ class CustomPasswordResetView(PasswordResetView):                        #비밀
     form_class = CustomPasswordResetForm
     template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
     success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190

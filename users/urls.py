@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190
 # users/urls.py
 
 from django.urls import path
@@ -11,3 +15,7 @@ urlpatterns = [
     path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),  # 여기서 변경
     path('', home_view, name='home'), #기본 주소
 ]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190
