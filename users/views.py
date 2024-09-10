@@ -1,18 +1,14 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
 from django.shortcuts import render
 from .forms import UserLoginForm, UserSignUpForm 
-from django.core.mail import send_mail            #아이디찾기
-from django.contrib.auth.models import User        #아이디찾기
-from django.conf import settings                   #아이디찾기
+from django.core.mail import send_mail                        #아이디찾기
+from django.contrib.auth.models import User                   #아이디찾기
+from django.conf import settings                              #아이디찾기
 from .forms import CustomPasswordResetForm                    #비밀번호 찾기 아이디 동반
-from django.contrib.auth.views import PasswordResetView      #비밀번호 찾기 아이디 동반
-from django.contrib.auth import get_user_model                  #아이디찾기 오류
+from django.contrib.auth.views import PasswordResetView       #비밀번호 찾기 아이디 동반
+from django.contrib.auth import get_user_model                #아이디찾기 오류
 
 
 
@@ -50,7 +46,7 @@ def login_view(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('home')  # 로그인 성공 후 홈 페이지로 이동
+                return redirect('product:product_list')  # 로그인 성공 후 상점 페이지로 이동
     else:
         form = UserLoginForm()
     
@@ -73,9 +69,3 @@ class CustomPasswordResetView(PasswordResetView):                        #비밀
     form_class = CustomPasswordResetForm
     template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
     success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190
