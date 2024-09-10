@@ -1,0 +1,10 @@
+<h1>My Orders</h1>
+<ul>
+  {% for order in orders %}
+    <li>
+      <a href="{% url 'order_detail' order.id %}">
+        Order #{{ order.id }} - {{ order.get_status_display }} - ${{ order.total_price }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>

@@ -5,4 +5,4 @@ from product.models import Product
 # Create your models here.
 
 class Order(models.Model):
-    
+    pass
