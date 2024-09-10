@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
@@ -10,6 +9,9 @@ from django.conf import settings                   #아이디찾기
 from .forms import CustomPasswordResetForm                    #비밀번호 찾기 아이디 동반
 from django.contrib.auth.views import PasswordResetView      #비밀번호 찾기 아이디 동반
 from django.contrib.auth import get_user_model                  #아이디찾기 오류
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 
 
@@ -40,6 +42,7 @@ def find_username_view(request):
     return render(request, 'users/find_username.html')
 
 
+
 def login_view(request):
     if request.method == 'POST':
         form = UserLoginForm(request, data=request.POST)
@@ -65,16 +68,47 @@ def signup_view(request):
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
 
-def mypage_view(request):
-    return render(request, 'users/mypage.html')
 
+@login_required
+def mypage_view(request):
+    password_confirmed = request.session.get('password_confirmed', False)
+
+    if not password_confirmed:
+        if request.method == 'POST':
+            password = request.POST.get('password')
+            user = authenticate(username=request.user.username, password=password)
+            if user is not None:
+                request.session['password_confirmed'] = True
+                return redirect('mypage')
+            else:
+                messages.error(request, '비밀번호가 틀렸습니다.')
+        # 여기서 `mypage.html`을 사용해 비밀번호 확인 폼을 표시합니다.
+        return render(request, 'users/mypage.html', {'password_confirmed': False})
+
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+
+        if not email:
+            messages.error(request, '이메일은 필수 입력 항목입니다.')
+            return redirect('mypage')
+
+        # 기본값 설정
+        if not phone:
+            phone = '000-0000-0000'
+
+        request.user.email = email
+        request.user.phone = phone
+        request.user.save()
+
+        messages.success(request, '정보가 성공적으로 수정되었습니다.')
+
+    return render(request, 'users/mypage.html', {
+        'password_confirmed': True,
+        'user': request.user,
+    })
 
 class CustomPasswordResetView(PasswordResetView):                        #비밀번호찾기 아이디동반
     form_class = CustomPasswordResetForm
     template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
     success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL
-
-
-
-
-

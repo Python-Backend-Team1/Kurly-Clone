@@ -5,18 +5,75 @@
     <meta charset="UTF-8">
     <title>로그인</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        .login-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+        .btn-primary {
+            background-color: #6a1b9a;
+            border-color: #6a1b9a;
+            width: 100%;
+            font-size: 18px;
+        }
+        .btn-primary:hover {
+            background-color: #4a148c;
+            border-color: #4a148c;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .login-container .btn-secondary {
+            background-color: #6a1b9a;
+            border-color: #6a1b9a;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #fff;
+        }
+        .login-container .btn-secondary:hover {
+            background-color: #4a148c;
+            color: #fff;
+        }
+        .form-group a {
+            color: #6a1b9a;
+            margin: 0 10px;
+        }
+        .form-group a:hover {
+            color: #4a148c;
+        }
+        .login-links {
+            margin-bottom: 20px; /* 아이디 찾기와 비밀번호 찾기 사이의 간격 추가 */
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+<div class="login-container">
     <h2>로그인</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">로그인</button>
     </form>
-    <div class="form-group" style="margin-top: 20px;">
-        <a href="{% url 'password_reset' %}" style="margin-right: 20px;">비밀번호 찾기</a>
+    <div class="form-group login-links">
         <a href="{% url 'find_username' %}">아이디 찾기</a>
+        <a href="{% url 'password_reset' %}">비밀번호 찾기</a>
     </div>
+    <a href="{% url 'signup' %}" class="btn btn-secondary">회원가입</a>
 </div>
 </body>
+</html>
+

@@ -13,8 +13,13 @@
             <div class="dropdown">
                 <button class="dropbtn">{{ user.username }} 님 ▼</button>
                 <div class="dropdown-content">
-                    <a href="{% url 'mypage' %}">마이페이지</a>
-                    <a href="{% url 'logout' %}">로그아웃</a>
+                    <form method="GET" action="{% url 'mypage' %}" style="display:inline;">
+                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">마이페이지</button>
+                    </form>
+                    <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">로그아웃</button>
+                    </form>
                 </div>
             </div>
         {% else %}
