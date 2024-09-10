@@ -1,27 +1,78 @@
-<!DOCTYPE html>                 <!-- 아이디 찾기 페이지-->
-<html lang="en">
+<!DOCTYPE html>
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>Find Username</title>
+    <title>아이디 찾기</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        .find-username-container {
+            max-width: 400px;
+            margin: 80px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .find-username-container h2 {
+            margin-bottom: 20px;
+            color: #5d4037;
+        }
+        .form-group {
+            text-align: left;
+        }
+        .form-control {
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .btn-primary {
+            background-color: #6a1b9a;
+            border-color: #6a1b9a;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #4a148c;
+            border-color: #4a148c;
+        }
+        .btn-secondary {
+            background-color: #b0bec5;
+            border-color: #b0bec5;
+            width: 100%;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #fff;
+        }
+        .btn-secondary:hover {
+            background-color: #90a4ae;
+            color: #fff;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
+<div class="find-username-container">
     <h2>아이디 찾기</h2>
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
             <label for="email">이메일 주소:</label>
-            <input type="email" class="form-control" id="email" name="email" required>
+            <input type="email" class="form-control" id="email" name="email" placeholder="이메일 주소를 입력하세요" required>
         </div>
         {% if error %}
-            <p style="color: red;">{{ error }}</p>
+            <p class="error-message">{{ error }}</p>
         {% endif %}
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">이메일 전송</button>
-            <!-- 홈 페이지로 이동하는 버튼 추가 -->
-            <a href="{% url 'home' %}" class="btn btn-secondary">홈으로</a>
-        </div>
+        <button type="submit" class="btn btn-primary">이메일 전송</button>
+        <a href="{% url 'home' %}" class="btn btn-secondary">홈으로</a>
     </form>
 </div>
 </body>

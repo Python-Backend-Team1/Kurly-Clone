@@ -1,60 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>마이페이지</title>
+    <title>{% if not password_confirmed %}비밀번호 재확인{% else %}개인 정보 수정{% endif %}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+        }
+        .welcome-message {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 100px;
+        }
+        .mypage-container {
+            text-align: center;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            width: 350px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #7b3eeb;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: #666;
+            text-align: left;
+            display: block;
+            margin-top: 15px;
+        }
+        input[type="text"], input[type="email"], input[type="password"], select, input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #7b3eeb;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #6933d3;
+        }
+    </style>
 </head>
 <body>
-    <h2>마이페이지</h2>
+    <div class="welcome-message">
+        반가워요! {{ user.username }}님
+    </div>
 
-    {% if not user.is_authenticated %}
-        <p>로그인이 필요합니다.</p>
-    {% else %}
-        <!-- 비밀번호 재확인 폼 -->
-        {% if not password_confirmed %}
-            <form method="post" action="{% url 'mypage' %}">
-                {% csrf_token %}
+    <div class="mypage-container">
+        <h2>{% if not password_confirmed %}비밀번호 재확인{% else %}개인 정보 수정{% endif %}</h2>
+        <form method="post" action="{% url 'mypage' %}">
+            {% csrf_token %}
+            <!-- 비밀번호 재확인 폼 -->
+            {% if not password_confirmed %}
                 <label for="password">비밀번호:</label>
                 <input type="password" id="password" name="password" required>
                 <button type="submit">확인</button>
-            </form>
-
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% else %}
-            <!-- 개인정보 수정 폼 -->
-            <form method="post" action="{% url 'mypage' %}">
-                {% csrf_token %}
+            {% else %}
+                <!-- 개인정보 수정 폼 -->
                 <label for="email">이메일:</label>
-                <input type="email" id="email" name="email" value="{{ user.email }}"><br>
+                <input type="email" id="email" name="email" value="{{ user.email }}" required>
 
                 <label for="phone">휴대폰:</label>
-                <input type="text" id="phone" name="phone" value="{{ user.phone }}"><br>
+                <input type="text" id="phone" name="phone" value="{{ user.phone }}" required>
 
-                <!-- 기타 필드 추가 -->
-                
+                <label for="name">이름:</label>
+                <input type="text" id="name" name="name" value="{{ user.name }}" required>
+
+                <label for="gender">성별:</label>
+                <select id="gender" name="gender">
+                    <option value="남자" {% if user.gender == '남자' %}selected{% endif %}>남자</option>
+                    <option value="여자" {% if user.gender == '여자' %}selected{% endif %}>여자</option>
+                </select>
+
+                <label for="birthdate">생년월일:</label>
+                <input type="date" id="birthdate" name="birthdate" value="{{ user.birthdate|date:'Y-m-d' }}" required>
+
                 <button type="submit">회원정보수정</button>
-            </form>
-
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
             {% endif %}
-
-            <!-- 홈으로 버튼 추가 -->
-            <a href="{% url 'home' %}">
-                <button type="button">홈으로</button>
-            </a>
-
-        {% endif %}
-    {% endif %}
+        </form>
+    </div>
 </body>
 </html>
