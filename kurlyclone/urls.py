@@ -17,7 +17,7 @@ Including another URLconf
 from django.urls import path
 from django.contrib import admin
 from django.urls import path, include
-from users.views import CustomPasswordResetView ,login_view, home_view,signup_view ,find_username_view,mypage_view                              # home_view 임포트 추가
+from users.views import CustomPasswordResetView ,login_view, home_view,signup_view ,find_username_view,mypage_view
 from django.contrib.auth import views as auth_views                                      #이메일인증(비밀번호찾기관련)
 
  
@@ -30,6 +30,7 @@ urlpatterns = [
     path('signup/', signup_view, name='signup'),                             # 회원가입 URL 추가
     path('mypage/', mypage_view, name='mypage'),                               #마이페이지
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),        #로그아웃뷰
+    path('mypage/', mypage_view, name='mypage'),
     path('', home_view, name='home'),                                      # 루트 URL 패턴 추가
     
     path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),  # 여기서 변경
