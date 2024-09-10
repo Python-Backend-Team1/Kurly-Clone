@@ -143,6 +143,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bj991220@gmail.com'
-EMAIL_HOST_PASSWORD = 'qpalzm13'
+EMAIL_HOST_PASSWORD = 'edbh ulbq kccb ntvg'                                           #실제 비밀번호가 아닌 앱 비밀번호
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
 ADMINS = [('Admin', 'admin@example.com')]
