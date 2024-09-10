@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <style>
+        /* 전체 페이지 레이아웃 설정 */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #footer {
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+        }
+
+        .inner_footer {
+            display: flex;               /* Flexbox 활성화 */
+            justify-content: space-between;  /* 좌우로 공간을 균등 분배 */
+            align-items: flex-start;         /* 위쪽 정렬 */
+            flex-wrap: wrap;              /* 작은 화면에서 줄이 넘어가도록 설정 */
+        }
+
+        .cc_footer,
+        .company_info,
+        .authentication {
+            flex-basis: 30%;              /* 각 섹션이 30%의 너비를 차지 */
+            margin-bottom: 20px;          /* 작은 화면일 때 아래쪽 간격 */
+        }
+
+        .sns {
+            display: flex;                /* SNS 아이콘들을 가로 정렬 */
+            gap: 10px;                    /* 아이콘 사이에 간격 추가 */
+        }
+
+        .sns img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .authentication {
+            display: flex;                /* 인증 마크들을 가로 정렬 */
+            justify-content: space-around; /* 인증 마크들 간격을 균등 분배 */
+        }
+
+        .mark img {
+            width: 50px;
+        }
+
+        /* 반응형 디자인: 작은 화면에서 세로 정렬로 변경 */
+        @media (max-width: 768px) {
+            .inner_footer {
+                flex-direction: column;     /* 작은 화면에서는 세로 배치 */
+                align-items: center;
+            }
+
+            .cc_footer,
+            .company_info,
+            .authentication {
+                flex-basis: 100%;           /* 너비를 100%로 설정 */
+                text-align: center;
+            }
+
+            .sns {
+                justify-content: center;    /* 작은 화면에서 중앙 정렬 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 페이지 헤더 -->
+    <header class="text-center py-3 bg-light">
+        <h1>장바구니 페이지</h1>
+    </header>
+
+    <!-- 장바구니 컨텐츠 -->
+    <div class="container mt-5">
+        <!-- 상품 목록 -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">상품목록</h5>
+    
+                        <!-- 상품 1 -->
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <img src="path_to_image" class="img-fluid" alt="Product Image">
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Product Name 1</h6>
+                                <p>Product details, size, etc.</p>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control quantity" data-price="9900" value="1" min="1" data-id="product-1">
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <p class="price" id="price-product-1">₩9,900</p>
+                            </div>
+                        </div>
+    
+                        <!-- 상품 2 -->
+                        <div class="row mb-3">
+                            <div class="col-md-2">
+                                <img src="path_to_image" class="img-fluid" alt="Product Image">
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Product Name 2</h6>
+                                <p>Product details, size, etc.</p>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control quantity" data-price="9900" value="1" min="1" data-id="product-2">
+                            </div>
+                            <div class="col-md-2 text-end">
+                                <p class="price" id="price-product-2">₩9,900</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- 결제 요약 -->
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">결제 요약</h5>
+                        <div class="d-flex justify-content-between">
+                            <p>상품금액</p>
+                            <p id="total-product-price">₩19,800</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>할인금액</p>
+                            <p id="discount-price">-₩0</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>배송비</p>
+                            <p>₩0</p>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <p><strong>결제예정금액</strong></p>
+                            <p id="final-price"><strong>₩19,800</strong></p>
+                        </div>
+                        <button class="btn btn-primary w-100">결제하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- 푸터 -->
+    <footer id="footer">
+        <div class="inner_footer">
+            <div class="cc_footer">
+                <h2 class="cc_tit">고객행복센터</h2>
+                <div class="cc_view cc_call">
+                    <h3><span class="tit">1644-1107</span></h3>
+                    <dl class="list">
+                        <dt>365고객센터</dt>
+                        <dd>오전 7시 - 오후 7시</dd>
+                    </dl>
+                </div>
+                <div class="cc_view cc_kakao">
+                    <h3><a href="#" class="tit">카카오톡 문의</a></h3>
+                    <dl class="list">
+                        <dt>365고객센터</dt>
+                        <dd>오전 7시 - 오후 7시</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="company_info">
+                <ul class="list">
+                    <li><a href="#" class="link">컬리소개</a></li>
+                    <li><a href="#" class="link">이용약관</a></li>
+                    <li><a href="#" class="link">개인정보처리방침</a></li>
+                    <li><a href="#" class="link">이용안내</a></li>
+                </ul>
+                <div class="spec_info">
+                    법인명 : 주식회사 컬리<br>
+                    사업자등록번호 : 000-00-0000<br>
+                    대표이사 : 000
+                </div>
+                <ul class="sns">
+                    <li><a href="#"><img src="https://res.kurly.com/pc/ico/1810/ico_instagram.png" alt="Instagram"></a></li>
+                    <li><a href="#"><img src="https://res.kurly.com/pc/ico/1810/ico_fb.png" alt="Facebook"></a></li>
+                    <li><a href="#"><img src="https://res.kurly.com/pc/ico/1810/ico_blog.png" alt="Blog"></a></li>
+                </ul>
+            </div>
+
+            <div class="authentication">
+                <a href="#" class="mark">
+                    <img src="https://res.kurly.com/pc/ico/2001/logo_isms.png" alt="ISMS">
+                    <p>[인증범위] 마켓컬리 쇼핑몰 서비스 개발 · 운영</p>
+                </a>
+                <a href="#" class="mark">
+                    <img src="https://res.kurly.com/pc/ico/2001/logo_eprivacyplus.png" alt="ePrivacy Plus">
+                    <p>개인정보보호 우수 웹사이트</p>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

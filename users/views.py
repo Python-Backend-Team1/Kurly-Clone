@@ -58,3 +58,15 @@ def signup_view(request):                                           #회원가�
     else:
         form = UserSignUpForm()
     return render(request, 'users/signup.html', {'form': form})
+
+
+class CustomPasswordResetView(PasswordResetView):                        #비밀번호찾기 아이디동반
+    form_class = CustomPasswordResetForm
+    template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
+    success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 401197d7c9cf463d3480a78a1ff5a9cbe81fa190
