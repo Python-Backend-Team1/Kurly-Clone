@@ -17,5 +17,11 @@
         <p class="price">₩{{ product.price }}</p>
         {{ product.unit }}
         {{ product.description|linebreaks }}
+
+        <!-- 구매 버튼 -->
+        <form action="{% url 'cart:add_to_cart' product.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">카트에 추가하기</button>
+        </form>
     </div>
 {% endblock %}

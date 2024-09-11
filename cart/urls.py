@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+app_name = 'cart'  # 네임스페이스 정의
+
 urlpatterns = [
     path('', views.cart_view, name='view_cart'),  # /cart/로 매핑됨
     path('add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),  # /cart/add/<product_id>/

@@ -7,8 +7,10 @@
     <div class="product-list">
         {% for product in products %}
             <div class="product-item">
-                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height: 200px;">
-                <h2>{{ product.name }}</h2>
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height: 200px;">
+                    <h2>{{ product.name }}</h2>
+                </a>
                 <p>{{ product.description }}</p>
                 <p>가격: {{ product.price }} 원</p>
             </div>

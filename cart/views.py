@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from .models import Cart, CartItem
 from django.http import JsonResponse
+from product.models import Product
 
 # 장바구니 조회 (View Cart)
 @login_required
@@ -24,24 +25,47 @@ def cart_view(request):
     }
     return render(request, 'cart/cart.html', context)
 
+@login_required
+def view_cart(request):
+    cart = request.session.get('cart', {})
+    cart_items = []
+    total_price = 0
+
+    products = Product.objects.filter(id__in=cart.keys())
+    for product in products:
+        quantity = cart[str(product.id)]
+        cart_items.append({
+            'product': product,
+            'quantity': quantity
+        })
+        total_price += product.price * quantity
+
+    discount_price = 0  # 할인이 있는 경우 여기에 추가 로직
+    shipping_fee = 3000 if total_price < 50000 else 0  # 예시 배송비 계산
+    final_price = total_price - discount_price + shipping_fee
+
+    return render(request, 'cart/cart.html', {
+        'cart_items': cart_items,
+        'total_price': total_price,
+        'discount_price': discount_price,
+        'shipping_fee': shipping_fee,
+        'final_price': final_price
+    })
+
 # 장바구니 항목 추가 (Add Item to Cart)
 @login_required
 def add_to_cart(request, product_id):
-    # 상품을 장바구니에 추가하는 로직
-    cart, created = Cart.objects.get_or_create(user=request.user)
+    product = get_object_or_404(Product, id=product_id)  # 상품이 존재하는지 확인
+    cart = request.session.get('cart', {})
 
-    # 장바구니 아이템 추가
-    cart_item, created = CartItem.objects.get_or_create(
-        cart=cart, 
-        product_id=product_id,  # Product ID로 추가
-        defaults={'quantity': 1}
-    )
-    
-    if not created:
-        cart_item.quantity += 1
-        cart_item.save()
-    
-    return redirect('view_cart')
+    # 장바구니 세션에 상품 추가
+    if str(product_id) in cart:
+        cart[str(product_id)] += 1  # 수량 증가
+    else:
+        cart[str(product_id)] = 1  # 처음 추가 시 수량 1로 설정
+
+    request.session['cart'] = cart
+    return redirect('cart:view_cart')
 
 # 장바구니 항목 수정 (Update Cart Item)
 @login_required
