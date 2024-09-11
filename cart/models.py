@@ -1,16 +1,6 @@
 from django.db import models
-from django.db import models
 from django.conf import settings
-
-# 임시 Product 모델 정의
-class Product(models.Model):
-    product_id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-
-    def __str__(self):
-        return self.name
-    
+from product.models import Product  # product 앱에서 Product 모델을 가져오기
 
 # Cart 모델
 class Cart(models.Model):
@@ -24,9 +14,9 @@ class Cart(models.Model):
 
 # CartItem 모델
 class CartItem(models.Model):
-    cart_item_id = models.AutoField(primary_key=True)
+    cart_item_id = models.AutoField(primary_key=True)  # 기본 키
     cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='cart_items')
-    product = models.ForeignKey('Product', on_delete=models.CASCADE)  # 임시 Product 모델과 연결
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     added_at = models.DateTimeField(auto_now_add=True)
 
