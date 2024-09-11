@@ -39,6 +39,9 @@ class Product(models.Model):
             models.Index(fields=['product_id']),
             models.Index(fields=['name']),
         ]
+    def get_absolute_url(self):
+        # reverse를 사용하여 'product_detail' URL 패턴을 사용하여 URL 생성
+        return reverse('product_detail', args=[str(self.id)])
 
     def __str__(self):
         return self.name
