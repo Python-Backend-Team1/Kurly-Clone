@@ -30,3 +30,7 @@ def product_detail(request, product_id):
     }
 
     return render(request, 'product/detail.html', context)
+
+def home(request):
+    products = Product.objects.all()  # 모든 상품을 가져옴
+    return render(request, 'home.html', {'products': products})

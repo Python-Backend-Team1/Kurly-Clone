@@ -1,38 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home Page</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
-<body>
-    <!-- 오른쪽 상단에 로그인 및 회원가입 또는 사용자 이름 버튼 추가 -->
-    <div class="top-right-buttons">
-        {% if user.is_authenticated %}
-            <div class="dropdown">
-                <button class="dropbtn">{{ user.username }} 님 ▼</button>
-                <div class="dropdown-content">
-                    <form method="GET" action="{% url 'mypage' %}" style="display:inline;">
-                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">마이페이지</button>
-                    </form>
-                    <form method="POST" action="{% url 'logout' %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">로그아웃</button>
-                    </form>
-                </div>
-            </div>
-        {% else %}
-            <a href="{% url 'login' %}">
-                <button>로그인</button>
-            </a>
-            <a href="{% url 'signup' %}">
-                <button>회원가입</button>
-            </a>
-        {% endif %}
-    </div>
+{% extends 'base.html' %}
 
-    <h1>환영합니다!</h1>
-    <p>이곳은 홈 페이지입니다.</p>
-</body>
-</html>
+{% block title %}홈 페이지{% endblock %}
+
+{% block content %}
+    <h1>상품 목록</h1>
+    <div class="product-list">
+        {% for product in products %}
+            <div class="product-item">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height: 200px;">
+                <h2>{{ product.name }}</h2>
+                <p>{{ product.description }}</p>
+                <p>가격: {{ product.price }} 원</p>
+            </div>
+        {% empty %}
+            <p>등록된 상품이 없습니다.</p>
+        {% endfor %}
+    </div>
+{% endblock %}

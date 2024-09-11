@@ -13,6 +13,7 @@ from django.contrib.auth.views import PasswordResetView      #비밀번호 찾�
 from django.contrib.auth import get_user_model                  #아이디찾기 오류
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from product.models import Product
 
 
 
@@ -114,3 +115,7 @@ class CustomPasswordResetView(PasswordResetView):                        #비밀
     form_class = CustomPasswordResetForm
     template_name = 'users/password_reset_form.html'  # 템플릿 파일 경로
     success_url = '/password_reset/done/'  # 성공 시 리다이렉트될 URL
+
+def product_list(request):
+    products = Product.objects.all()  # 상품 리스트 조회
+    return render(request, 'your_template.html', {'products': products})

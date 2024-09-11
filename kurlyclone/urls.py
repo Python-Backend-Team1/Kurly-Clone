@@ -13,7 +13,7 @@ urlpatterns = [
     path('order/', include('order.urls')),
     path('cart/', include('cart.urls')), 
     path('', home_view, name='home'), #기본 주소
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
