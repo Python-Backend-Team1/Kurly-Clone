@@ -9,8 +9,6 @@ from django.conf import settings                              #아이디찾기
 from .forms import CustomPasswordResetForm                    #비밀번호 찾기 아이디 동반
 from django.contrib.auth.views import PasswordResetView       #비밀번호 찾기 아이디 동반
 from django.contrib.auth import get_user_model                #아이디찾기 오류
-from django.contrib.auth.views import PasswordResetView       #비밀번호 찾기 아이디 동반
-from django.contrib.auth import get_user_model                  #아이디찾기 오류
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from product.models import Product
@@ -22,25 +20,30 @@ def home_view(request):
 
 def find_username_view(request):
     if request.method == 'POST':
-        email = request.POST['email']
+        email = request.POST.get('email')
         try:
-            # 이메일과 일치하는 첫 번째 사용자만 선택
+            # 이메일과 일치하는 첫 번째 사용자 선택
             user = get_user_model().objects.filter(email=email).first()
             if user:
+                # 이메일 전송
                 send_mail(
-                    'Your Username',
-                    f'Your username is {user.username}',
-                    settings.DEFAULT_FROM_EMAIL,
-                    [email],
+                    '아이디 이메일 인증',  # 이메일 제목
+                    f'당신의 아이디는 {user.username} 입니다 ',  # 이메일 내용
+                    settings.DEFAULT_FROM_EMAIL,  # 발신자 이메일 주소
+                    [email],  # 수신자 이메일 주소
                     fail_silently=False,
                 )
+                # 성공 시 완료 페이지로 리다이렉트
                 return render(request, 'users/find_username_done.html')
             else:
+                # 사용자를 찾지 못한 경우 에러 메시지 전달
                 return render(request, 'users/find_username.html', {'error': 'Email not found'})
 
         except Exception as e:
+            # 다른 예외 발생 시 에러 메시지 전달
             return render(request, 'users/find_username.html', {'error': str(e)})
 
+    # GET 요청 시 아이디 찾기 페이지 렌더링
     return render(request, 'users/find_username.html')
 
 
