@@ -50,7 +50,10 @@
                 <p>배송비: {{ shipping_fee }}원</p>
                 <hr>
                 <p>결제예정금액: {{ final_price }}원</p>
-                <button class="checkout-btn">로그인 후 결제하기</button>
+                <form method="post" action="{% url 'order:create_order' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="checkout-btn">결제하기</button>
+                </form>
             </div>
         </div>
     </div>

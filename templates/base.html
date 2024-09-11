@@ -23,6 +23,12 @@
                     </form>
                 </div>
             </div>
+            
+            <!-- 주문 내역 버튼 추가 -->
+            <a href="{% url 'order:order_list' %}">
+                <button>주문 내역</button>
+            </a>
+            
         {% else %}
             <a href="{% url 'login' %}">
                 <button>로그인</button>
@@ -30,6 +36,7 @@
             <a href="{% url 'signup' %}">
                 <button>회원가입</button>
             </a>
+            
         {% endif %}
     </div>
 

@@ -7,13 +7,17 @@
     <title>Order List</title>
 </head>
 <body>
-    <h1>Order List</h1>
-    <ul>
-        {% for order in orders %}
-            <li>Order ID: {{ order.id }} | Customer: {{ order.user.username }} | Status: {{ order.order_status }}</li>
-        {% empty %}
-            <li>No orders available.</li>
-        {% endfor %}
-    </ul>
+  <h1>Order List</h1>
+  <ul>
+      {% for order in orders %}
+      <li>
+          <a href="{% url 'order:order_detail' order.id %}">
+              주문 ID: {{ order.id }} | 고객: {{ order.user.username }} | 상태: {{ order.status }}
+          </a>
+      </li>
+      {% empty %}
+      <li>주문 내역이 없습니다.</li>
+      {% endfor %}
+  </ul>
 </body>
 </html>

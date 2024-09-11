@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', include('product.urls', namespace='product')),
     path('users/', include('users.urls')),
-    path('order/', include('order.urls')),
+    path('order/', include('order.urls', namespace='order')),
     path('cart/', include('cart.urls', namespace='cart')),  # 장바구니 앱 포함
     path('', home_view, name='home'),  # 기본 주소
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

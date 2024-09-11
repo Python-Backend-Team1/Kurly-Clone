@@ -1,10 +1,10 @@
 from django.urls import path
-from django.http import HttpResponseRedirect
 from . import views
 
+app_name = 'order'  # 네임스페이스 설정
+
 urlpatterns = [
-    path('', lambda request: HttpResponseRedirect('list/')),  # 기본 경로를 'list/'로 리디렉션
-    path('create/', views.create_order, name='create_order'),
-    path('list/', views.order_list, name='order_list'),
-    path('<int:order_id>/', views.order_detail, name='order_detail'),
+    path('create/', views.create_order, name='create_order'),  # 주문 생성
+    path('list/', views.order_list, name='order_list'),  # 주문 목록
+    path('<int:order_id>/', views.order_detail, name='order_detail'),  # 주문 상세
 ]
