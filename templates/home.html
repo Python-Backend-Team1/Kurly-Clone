@@ -1,22 +1,37 @@
-<!DOCTYPE html>                       <!--홈 페이지 -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <!-- 오른쪽 상단에 로그인 및 회원가입 버튼 추가 -->
+    <!-- 오른쪽 상단에 로그인 및 회원가입 또는 사용자 이름 버튼 추가 -->
     <div class="top-right-buttons">
-        <a href="{% url 'login' %}">
-            <button>로그인</button>
-        </a>
-        <a href="{% url 'signup' %}">
-            <button>회원가입</button>
-        </a>
+        {% if user.is_authenticated %}
+            <div class="dropdown">
+                <button class="dropbtn">{{ user.username }} 님 ▼</button>
+                <div class="dropdown-content">
+                    <form method="GET" action="{% url 'mypage' %}" style="display:inline;">
+                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">마이페이지</button>
+                    </form>
+                    <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+                        {% csrf_token %}
+                        <button type="submit" style="background:none; border:none; color:blue; cursor:pointer;">로그아웃</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <a href="{% url 'login' %}">
+                <button>로그인</button>
+            </a>
+            <a href="{% url 'signup' %}">
+                <button>회원가입</button>
+            </a>
+        {% endif %}
     </div>
+
     <h1>환영합니다!</h1>
     <p>이곳은 홈 페이지입니다.</p>
 </body>

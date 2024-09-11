@@ -1,5 +1,6 @@
 from pathlib import Path
 import environ
+import os 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,15 +31,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'product',
+     'product',
 #     'category',
 #     'orders',
 #     'orderitem',
-#     'reviews',
-#     'cart',
-#     'cartitem',
 #     'reviews'
-    'cart'
+     'cart'
 #     'cartitem'
 ]
 
@@ -53,6 +51,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'kurlyclone.urls'
+
+LOGOUT_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {
@@ -77,7 +77,8 @@ WSGI_APPLICATION = 'kurlyclone.wsgi.application'
 DATABASES = {
     'default': env.db(default='sqlite:///db.sqlite3')
 }
-AUTH_USER_MODEL = 'users.CustomUser'
+
+AUTH_USER_MODEL = 'users.CustomUser'        #사용자 커스텀 모델 
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
@@ -103,9 +104,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+
 # Media files (Uploaded by users)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -137,10 +139,17 @@ X_FRAME_OPTIONS = 'DENY'
 
 # Email backend settings for error reporting (Example)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = env('EMAIL_HOST', default='smtp.example.com')
-EMAIL_PORT = env('EMAIL_PORT', default=587)
-EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=True)
-EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='your-email@example.com')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='your-password')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'bj991220@gmail.com'
+EMAIL_HOST_PASSWORD = 'edbh ulbq kccb ntvg'                                           #실제 비밀번호가 아닌 앱 비밀번호
 DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='webmaster@localhost')
 ADMINS = [('Admin', 'admin@example.com')]
+
+
+
+
+
+
+
