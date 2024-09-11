@@ -66,7 +66,7 @@
 
     <div class="mypage-container">
         <h2>{% if not password_confirmed %}비밀번호 재확인{% else %}개인 정보 수정{% endif %}</h2>
-        <form method="post" action="{% url 'mypage' %}">
+        <form method="post" action="{% url 'users:mypage' %}">
             {% csrf_token %}
             <!-- 비밀번호 재확인 폼 -->
             {% if not password_confirmed %}

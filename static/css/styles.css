@@ -1,229 +1,26 @@
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-/* 오른쪽 상단에 배치하는 스타일 */
-.top-right-buttons {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.top-right-buttons a {
-    margin-left: 10px;
-}
-
-.top-right-buttons button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #6b5b95;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.top-right-buttons button:hover {
-    background-color: #5a4878;
-}
-
-/* 드롭다운 메뉴 스타일 */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
-
-/* 나머지 스타일 */
-form {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-group input,
-.form-group select,
-.form-group button {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-.form-group input[type="radio"] {
-    width: auto;
-    margin-right: 5px;
-}
-
-button {
-    background-color: #6b5b95;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #5a4878;
-}
-
-.gender-options {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.gender-options label {
-    margin-left: 5px;
-    margin-right: 15px;
-}
-
-/* styles.css */
-.container {
-    width: 90%;
-    margin: 0 auto;
-}
-
+/* product-list를 중앙 정렬 */
 .product-list {
     display: flex;
-    flex-wrap: wrap; /* 줄 바꿈을 허용하여 컨테이너 너비에 맞게 정렬합니다. */
-    gap: 20px; /* 상품 항목 간의 간격을 설정합니다. */
-    justify-content: space-around; /* 상품 항목을 가로 방향으로 중앙에 정렬합니다. */
+    justify-content: center;  /* 수평 가운데 정렬 */
+    flex-wrap: wrap;          /* 줄 바꿈을 허용 */
+    gap: 20px;                /* 아이템 간의 간격 */
+    padding: 20px;
 }
 
+/* 각 상품 아이템의 스타일 */
 .product-item {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-    width: 220px; /* 상품 항목의 너비를 설정합니다. */
-}
-
-.product-item img {
-    max-width: 100%; /* 이미지가 상품 항목의 너비를 넘지 않도록 합니다. */
-    height: auto;
-}
-   
-.cart-section {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 30px;
-}
-
-.cart-items {
-    width: 65%;
-    background-color: #f9f9f9;
+    flex: 1 1 300px;          /* 상품 아이템의 너비와 최소 너비를 지정 */
+    max-width: 300px;         /* 최대 너비 지정 */
+    text-align: center;       /* 텍스트를 중앙 정렬 */
+    border: 1px solid #ccc;
     padding: 20px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
 
-.cart-items ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.item-info {
-    display: flex;
-    align-items: center;
-}
-
-.product-image {
-    width: 80px;
-    margin-right: 20px;
-}
-
-.item-details {
-    font-size: 16px;
-}
-
-.item-actions {
-    display: flex;
-    align-items: center;
-}
-
-.item-actions form {
-    margin-left: 10px;
-}
-
-.order-summary {
-    width: 30%;
-    background-color: #f9f9f9;
+/* 전체 페이지를 중앙에 정렬하는 container */
+.container {
+    max-width: 1200px;        /* 페이지의 최대 너비 */
+    margin: 0 auto;           /* 수평 가운데 정렬 */
     padding: 20px;
-    border-radius: 10px;
 }
-
-.order-summary h2 {
-    font-size: 20px;
-}
-
-.order-summary p {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-.checkout-btn {
-    width: 100%;
-    padding: 15px;
-    background-color: #5f0080;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-}
-

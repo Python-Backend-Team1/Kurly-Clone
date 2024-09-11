@@ -8,7 +8,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', include('product.urls', namespace='product')),
-    path('users/', include('users.urls')),
+    path('users/', include('users.urls', namespace='users')),
     path('order/', include('order.urls', namespace='order')),
     path('cart/', include('cart.urls', namespace='cart')),  # 장바구니 앱 포함
     path('', home_view, name='home'),  # 기본 주소

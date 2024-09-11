@@ -1,0 +1,70 @@
+/* header와 footer를 제외한 콘텐츠 메인 페이지 */
+
+@charset "utf-8";
+
+#contents {
+    height: 3000px;
+}
+
+#contents #go-top {
+    position: fixed;
+    z-index: 200;
+    right: 31px;
+    bottom: 12px;
+    width: 58px;
+    height: 58px;
+    border: 0;
+    background: url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_v2.png) no-repeat 50% 50%;
+    font-size: 0;
+    line-height: 0;
+    transition: background .5s;
+}
+
+/* hover시 transition 색 변경 */
+#contents #go-top:hover {
+    background-image: url(https://res.kurly.com/pc/service/common/1903/btn_pagetop_hover.png);
+    transition: background .5s;
+}
+
+@media (max-width: 1025px) { /*width 1025부터 display: none*/
+    .qnb {
+        display: none;
+    }
+}
+
+#contents .qnb {
+    position: fixed;
+    right: 20px;
+    width: 80px;
+    color: #333;
+    letter-spacing: -.3;
+    z-index: 1;
+    transition: top 0.2s;
+    /* top에서부터 0.2초 딜레이 */
+}
+
+#contents .qnb .thumb {
+    width: 80px;
+    height: 120px;
+    padding-bottom: 7px;
+}
+
+#contents .qnb .side_menu {
+    width: 80px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-top: none;
+}
+
+#contents .side_menu .link_menu {
+    display: block;
+    height: 29px;
+    line-height: 29px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+}
+
+
+
+
+

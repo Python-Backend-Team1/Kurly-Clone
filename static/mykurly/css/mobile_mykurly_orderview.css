@@ -1,0 +1,326 @@
+body, button, input, select, textarea {
+    font-family: -apple-system,blinkmacsystemfont,applesdgothicneo,apple sd gothic neo,Helvetica,noto sans kr,malgun gothic,맑은 고딕,sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0;
+}
+
+body .section_orderlist {
+    padding: 0 0 89px;
+}
+
+.user_form {
+    min-height: 100%;
+    padding: 0 0 70px;
+    color: #333;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.order_delivery {
+    background-color: #fff;
+}
+
+.order_delivery .tit {
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+.order_delivery li {
+    overflow: hidden;
+    padding: 10px 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.order_delivery .subject {
+    float: left;
+}
+
+.order_delivery .subject .type {
+    display: inline-block;
+    width: 33px;
+    color: #666;
+    vertical-align: top;
+}
+
+.order_delivery .detail {
+    float: right;
+    max-width: 48%;
+}
+
+.order_delivery .detail .maker {
+    float: left;
+    color: #999;
+}
+
+.order_delivery .detail .search {
+    float: right;
+    padding-left: 13px;
+    color: #5f0080;
+    text-decoration: underline;
+}
+
+.order_delivery .list_status {
+    padding: 6px 0 7px;
+}
+
+.box_type {
+    border-top: 10px solid #f4f4f4;
+    background-color: #fff;
+    counter-increment: box_type;
+}
+
+.box_type .box_tit .btn_view {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    height: 56px;
+    padding: 0 60px 0 20px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 56px;
+}
+
+.box_type .box_tit .btn_view:after {
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -10px;
+    background: url(https://res.kurly.com/mobile/ico/2010/ico_drop_up.svg) no-repeat 100% 0;
+    background-size: 20px 20px;
+}
+
+.box_type.on .box_tit .btn_view:after {
+    transform: rotate(-180deg);
+}
+
+.section_orderlist .goods_list .box_view {
+    padding: 0;
+}
+
+.section_orderlist .put_cart {
+    padding: 8px 20px 25px;
+}
+
+.section_orderlist .put_cart .btn_type2 {
+    border: 1px solid #ddd;
+}
+
+.btn_type2 {
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.btn_type1, .btn_type2, .btn_type3, .btn_type4, .btn_type5, .btn_type99, .btn_type100 {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    font-size: 0;
+    text-align: center;
+    outline: none;
+}
+
+.section_orderlist .put_cart .btn_type2 .txt_type {
+    color: #333;
+}
+
+.btn_type1 .txt_type, .btn_type2 .txt_type, .btn_type3 .txt_type, .btn_type4 .txt_type, .btn_type5 .txt_type, .btn_type99 .txt_type, .btn_type100 .txt_type {
+    display: inline-block;
+    height: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+}
+
+.section_orderlist .list_goods {
+    padding-bottom: 5px;
+}
+
+.section_orderlist .list_goods li {
+    overflow: hidden;
+    position: relative;
+    padding: 0 20px;
+}
+
+.section_orderlist .list_goods li:first-child .goods_thumb {
+    padding-top: 0;
+}
+
+.section_orderlist .list_goods .goods_thumb {
+    float: left;
+    width: 66px;
+    padding: 16px 0;
+}
+
+.section_orderlist .list_goods .goods_thumb a {
+    display: block;
+    overflow: hidden;
+    width: 50px;
+    height: 65px;
+    background-color: #f4f4f4;
+}
+
+.section_orderlist .list_goods .goods_thumb img {
+    width: 50px;
+}
+
+.section_orderlist .list_goods li:first-child .goods_info {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.section_orderlist .list_goods .goods_info {
+    overflow: hidden;
+    padding: 17px 0 14px;
+    border-top: 1px solid #f4f4f4;
+}
+
+.section_orderlist .list_goods .tit_product {
+    display: block;
+    padding: 0;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.section_orderlist .list_goods .goods_price {
+    padding-top: 5px;
+}
+
+.section_orderlist .list_goods .price {
+    font-weight: 700;
+}
+
+.section_orderlist .list_goods .ea {
+    font-weight: 600;
+    color: #666;
+}
+
+.section_orderlist .list_goods .bar {
+    padding: 0 7px 0 5px;
+    vertical-align: -1px;
+}
+
+.section_orderlist .list_goods .bar:before {
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    background-color: #ddd;
+    vertical-align: 0;
+}
+
+.section_orderlist .list_goods .progress {
+    padding-top: 5px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #5f0080;
+    line-height: 16px;
+}
+
+.section_orderlist .list_goods .end {
+    color: #333;
+}
+
+.section_orderlist .box_type .box_view dl {
+    padding: 7px 0 4px;
+}
+
+.box_type .box_view dl {
+    overflow: hidden;
+    width: 100%;
+    padding-top: 10px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.section_orderlist .box_type .box_view dt {
+    width: 140px;
+    padding-right: 10px;
+    color: #666;
+}
+
+.box_type .box_view dt {
+    float: left;
+    width: 105px;
+    padding-left: 20px;
+}
+
+.section_orderlist .type_settlement .box_view dd {
+    text-align: right;
+}
+
+.section_orderlist .box_type .box_view dd {
+    font-weight: 400;
+    color: #333;
+}
+
+.box_type .box_view dd {
+    overflow: hidden;
+    padding-right: 20px;
+    font-weight: 700;
+    word-break: break-all;
+}
+
+.section_orderlist .box_type .box_view {
+    padding: 0 0 16px;
+}
+
+.section_orderlist .order_cancel {
+    border-top: 10px solid #f4f4f4;
+    padding: 20px 20px 0;
+}
+
+.section_orderlist .info_notice {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 11px;
+}
+
+.section_orderlist .info_notice .notice {
+    padding-right: 103px;
+    font-size: 12px;
+    color: #999;
+    line-height: 16px;
+}
+
+.section_orderlist .info_notice .emph {
+    font-weight: 600;
+}
+
+.section_orderlist .info_notice .link {
+    position: absolute;
+    right: 0;
+    top: -3px;
+    padding-right: 16px;
+    background: url(https://res.kurly.com/mobile/ico/2010/ico_arrow_5f0080_16x16.svg?v=1) no-repeat 100% 2px;
+    background-size: 16px 16px;
+    font-weight: 600;
+    color: #5f0080;
+    text-align: right;
+}
+
+.section_orderlist .order_cancel .btn_type1 {
+    border-color: #5f0080;
+    background-color: #fff;
+}
+
+.btn_type1 {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+}
+
+.section_orderlist .order_cancel .txt_type {
+    color: #5f0080;
+    line-height: 48px;
+}

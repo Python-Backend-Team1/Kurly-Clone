@@ -1,0 +1,98 @@
+body{
+    font-family: applesdgothicneo,apple sd gothic neo,sans-serif;
+}
+
+
+.section_destination {
+    padding-bottom: 48px;
+}
+
+.layer_addresssearch {
+
+    position: relative;
+    width: 100%;
+
+}
+
+.modify{
+    padding: 4px 20px 0;
+}
+
+
+.layer_prev{
+    display: block;
+    padding: 55px 0 34px;
+    font-weight: 600;
+    font-size: 24px;
+    color: #5f0080;
+    line-height: 30px;
+    text-align: center;
+}
+
+.layer_prev .desc{
+    display: block;
+    padding-top: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    color: #999;
+    line-height: 18px;
+}
+
+
+
+#sample3_address{
+    border: none;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -.3px;
+}
+
+input[type=search], input[type=email], input[type=password], input[type=text], input[type=number], textarea, .field_address .txt_address, .birth_day {
+    width: 100%;
+    height: 48px;
+    padding: 0 11px 1px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+}
+
+.no_delivery .inner_no{
+    position: relative;
+    margin-bottom: -2px;
+    padding: 12px 0 0 13px;
+    font-size: 12px;
+    color: #999;
+    line-height: 16px;
+}
+
+.address_btn{
+    margin-top:24px;
+    display: block;
+    
+}
+
+
+
+.btn_type{
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+    width: 45%;
+    height: 48px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 45px;
+    text-align: center;
+    outline: none;
+    margin-left:7px;
+}

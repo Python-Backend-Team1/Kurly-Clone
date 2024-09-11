@@ -1,0 +1,486 @@
+body{
+    background-color: #f4f4f4;
+}
+
+
+body, button, input, select, textarea {
+    font-family: -apple-system,blinkmacsystemfont,applesdgothicneo,apple sd gothic neo,Helvetica,noto sans kr,malgun gothic,맑은 고딕,sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0;
+}
+
+body .header_menu {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    min-height: 44px;
+    padding: 0;
+}
+
+.user_form {
+    min-height: 100%;
+    padding: 0 0 70px;
+    color: #333;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.header_menu .inner_headermenu {
+    position: relative;
+    z-index: 1;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+
+.header_menu .bar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 3px;
+    background-color: #5f0080;
+}
+
+.header_menu .tab_menu2 .on a {
+    color: #5f0080;
+}
+
+.header_menu .tab_menu2 a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    padding-top: 13px;
+    background-color: #fff;
+    font-weight: 500;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    text-align: center;
+    outline: none;
+}
+
+.header_menu .tab_menu2 li:last-child a {
+    left: 50%;
+}
+
+.section_review .list_before {
+    padding-top: 10px;
+}
+
+.section_review .list_after .no_data, .section_review .no_data {
+    padding-top: 120px;
+    background-color: #f4f4f4;
+    font-size: 16px;
+    color: #999;
+    line-height: 17px;
+    text-align: center;
+}
+
+.section_review .list_after {
+    padding-top: 53px;
+}
+
+.section_review .list_after li {
+    margin-bottom: 10px;
+    padding: 0 20px;
+    background-color: #fff;
+}
+
+.section_review .list_after .tit_after {
+    padding: 10px 0 6px;
+    border-bottom: 1px solid #ccc;
+}
+
+.section_review .list_after .main_name {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+}
+
+.section_review .list_after .cont_after {
+    display: block;
+    padding-bottom: 10px;
+}
+
+.section_review .list_after .desc_after {
+    display: block;
+    overflow: hidden;
+}
+
+.section_review .list_after .thumb {
+    position: relative;
+    float: right;
+    width: 50px;
+    height: 50px;
+    margin: 14px 0 0 20px;
+}
+
+.section_review .list_after .subject {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.section_review .list_after .txt {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 10px;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.section_review .list_after .desc {
+    display: block;
+    overflow: hidden;
+    padding-top: 14px;
+}
+
+.section_review .list_after .info_after {
+    display: block;
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+.section_review .list_after .date {
+    float: left;
+    font-size: 12px;
+    color: #666;
+    line-height: 18px;
+}
+
+.section_review .list_after .help {
+    float: right;
+    font-size: 12px;
+    color: #666;
+    line-height: 18px;
+    text-align: right;
+}
+
+.section_reviewer .review_view {
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.section_reviewer .tit_after {
+    display: block;
+    margin: 0 20px;
+    padding: 11px 0 6px;
+    border-bottom: 1px solid #ccc;
+    background: url(https://res.kurly.com/mobile/ico/1807/ico_arow_22x32.png) no-repeat 99% 52%;
+    background-size: 11px 16px;
+}
+
+.section_reviewer .main_name {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+}
+
+.section_reviewer .cont_after {
+    display: block;
+    padding: 0 20px 18px;
+}
+
+.section_reviewer .desc_after {
+    display: block;
+    overflow: hidden;
+}
+
+.section_reviewer .thumb {
+    display: block;
+}
+
+.section_reviewer .thumb img {
+    display: block;
+    margin: 10px auto 0;
+}
+
+.section_reviewer .desc {
+    display: block;
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+.section_reviewer .subject {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    word-break: break-all;
+}
+
+.section_reviewer .txt {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 11px;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    word-break: break-all;
+}
+
+.section_reviewer .info_after {
+    display: block;
+    overflow: hidden;
+    padding-top: 15px;
+}
+
+.section_reviewer .date {
+    float: left;
+    font-size: 12px;
+    color: #666;
+    line-height: 18px;
+}
+
+.section_reviewer .help {
+    float: right;
+    font-size: 12px;
+    color: #666;
+    line-height: 18px;
+    text-align: right;
+}
+
+.section_reviewer .group_btn {
+    overflow: hidden;
+    margin: 0 20px;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+}
+
+body .section_reviewer .group_btn .btn_del {
+    float: left;
+    width: auto;
+    border: 1px solid #fff;
+    text-align: left;
+}
+
+.section_reviewer .group_btn .btn {
+    overflow: hidden;
+    float: right;
+    width: 50px;
+    height: 30px;
+    border: 1px solid #5f0080;
+    border-radius: 3px;
+    background-color: #fff;
+    font-size: 12px;
+    color: #5f0080;
+    line-height: 31px;
+    text-align: center;
+}
+
+.section_reviewer .group_btn .btn_del:before {
+    content: "";
+    float: left;
+    width: 12px;
+    height: 12px;
+    margin: 9px 4px 0 0;
+    background: url(https://res.kurly.com/mobile/ico/1807/ico_delete_x2.png) no-repeat 0 0;
+    background-size: 12px 12px;
+}
+
+.section_write {
+    padding-top: 10px;
+}
+
+.section_write .after_write {
+    padding: 0 20px 60px;
+    background-color: #fff;
+}
+
+.section_write .tit_after {
+    padding: 17px 0 10px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.section_write .main_name {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+}
+
+.section_write .tit_write {
+    overflow: hidden;
+    padding: 21px 0 9px;
+}
+
+.section_write .tit_write .tit {
+    float: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+}
+
+input[type=search], input[type=email], input[type=password], input[type=text], input[type=number], textarea, .field_address .txt_address, .birth_day {
+    width: 100%;
+    height: 48px;
+    padding: 0 11px 1px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+}
+
+.section_write .field_cmt {
+    padding: 10px 0;
+}
+
+.section_write .inner_field {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.section_write .inner_field #fieldCmt {
+    height: 140px;
+    padding: 0;
+    border: 0;
+    resize: none;
+}
+
+#fieldCmt {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
+.section_write .field_cmt .txt_count {
+    padding-top: 10px;
+    font-size: 12px;
+    color: #666;
+    line-height: 20px;
+    text-align: right;
+}
+
+.section_write .photo_view {
+    padding-top: 9px;
+    border-top: 1px solid #dfdede;
+}
+
+.section_write .tit_photo {
+    overflow: hidden;
+}
+
+.section_write .tit_photo .tit {
+    float: left;
+    color: #666;
+    line-height: 20px;
+}
+
+.section_write .tit_photo .file_count {
+    float: right;
+}
+
+.section_write .file_count .txt_count {
+    font-size: 12px;
+    color: #666;
+    line-height: 20px;
+    text-align: right;
+}
+
+.section_write .photo_scroll {
+    overflow-y: visible;
+    overflow-x: scroll;
+    position: relative;
+    width: 100%;
+    height: 84px;
+}
+
+.section_write .photo_add {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-top: 19px;
+}
+
+.section_write .btn_upload {
+    position: relative;
+    float: left;
+    width: 64px;
+    height: 64px;
+    border: 1px solid #ccc;
+    background: url(https://res.kurly.com/pc/ico/1806/img_add_thumb_x2.png) no-repeat 50% 50%;
+    background-size: 14px 14px;
+}
+
+.section_write .file_upload {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.section_write .photo_notice {
+    padding-top: 10px;
+    font-size: 12px;
+    color: #666;
+}
+
+.section_write #btnSubmit {
+    margin-top: 30px;
+}
+
+.btn_type1 {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+}
+
+.btn_type1, .btn_type2, .btn_type3, .btn_type4, .btn_type5, .btn_type99, .btn_type100 {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 48px;
+    border-radius: 4px;
+    font-size: 0;
+    text-align: center;
+    outline: none;
+}
+
+.btn_type1 .txt_type {
+    color: #fff;
+}
+
+.btn_type1 .txt_type, .btn_type2 .txt_type, .btn_type3 .txt_type, .btn_type4 .txt_type, .btn_type5 .txt_type, .btn_type99 .txt_type, .btn_type100 .txt_type {
+    display: inline-block;
+    height: 100%;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    line-height: 48px;
+    text-align: center;
+}

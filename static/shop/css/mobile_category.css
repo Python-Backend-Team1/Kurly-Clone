@@ -1,0 +1,246 @@
+body, button, input, select, textarea {
+    font-family: applesdgothicneo,apple sd gothic neo,sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0;
+}
+
+
+
+#wrap, .preload:after {
+    height: 100%;
+    width: 100%;
+}
+
+.layout-main-wrapper {
+    position: relative;
+}
+
+#gnbMenu {
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.screen_out {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+body #gnbMenu .list_gnb .link_often {
+    height: 70px;
+    padding-top: 12px;
+    border-top: 10px solid #f4f4f4;
+    border-bottom: 10px solid #f4f4f4;
+    font-size: 16px;
+    color: #5f0080;
+    line-height: 30px;
+    
+}
+
+body #wrap #gnbMenu ul .slide{  /* 내려오는 효과 주기위한거 */
+    display:none;
+}
+
+
+#gnbMenu .list_gnb .menu {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    height: 51px;
+    padding: 10px 0 10px 20px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+body #gnbMenu .list_gnb .link_often:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 50px;
+    background: url(https://res.kurly.com/mobile/ico/1908/ico_arrow_right_gnb_80x100.png) no-repeat 100% 50%;
+    background-size: 40px 50px;
+}
+
+#gnbMenu .list_gnb .menu:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background: url(https://res.kurly.com/mobile/ico/1908/ico_arrow_gnb_100x100.png) no-repeat 50% 50%;
+    background-size: 50px 50px;
+    transition: all ease .5s;
+}
+
+#gnbMenu .list_gnb .menu.on:after {
+    transform: rotate(-180deg);
+}
+
+#gnbMenu .list_gnb .menu.on .txt {
+    color: #5f0080;
+}
+
+#gnbMenu .list_gnb .menu {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    height: 51px;
+    padding: 10px 0 10px 20px;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+#gnbMenu .list_gnb .ico {
+    float: left;
+    width: 30px;
+    height: 30px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 30px 30px;
+}
+
+#gnbMenu .list_gnb .txt {
+    float: left;
+    padding: 2px 6px 0 10px;
+    font-size: 16px;
+    color: #333;
+    line-height: 30px;
+}
+
+#gnbMenu .list_gnb .ico_new {
+    overflow: hidden;
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin-top: 8px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 14px 14px;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}
+
+#gnbMenu .sub_menu {
+    padding: 10px 0 23px;
+    background-color: #f4f4f4;
+}
+
+#gnbMenu .sub_menu a {
+    display: block;
+    overflow: hidden;
+    padding: 14px 0 10px 60px;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+}
+
+#gnbMenu .recommend_gnb {
+    padding: 31px 20px 0;
+}
+
+#gnbMenu:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 60px;
+    background-color: #f4f4f4;
+}
+
+#gnbMenu .recommend_gnb .tit {
+    font-weight: 600;
+    font-size: 16px;
+    color: #333;
+}
+
+#gnbMenu .recommend_gnb .list {
+    overflow: hidden;
+    padding: 3px 0 17px;
+}
+
+#gnbMenu .recommend_gnb li {
+    float: left;
+    width: 50%;
+    padding: 10px 4px 3px 0;
+}
+
+#gnbMenu .recommend_gnb a {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+
+#gnbMenu .recommend_gnb .thumb {
+    display: block;
+    width: 100%;
+    background: #f9f8f9 url(https://res.kurly.com/mobile/img/1808/img_none_x2.png) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+#gnbMenu .recommend_gnb .name {
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#gnbMenu .recommend_gnb .border {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0,0,0,.08);
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+}
+
+
+.location_status {
+    position: absolute;
+    right: 49px;
+    top: 68px;
+    max-width: 197px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #b277fe;
+    font-size: 14px;
+    color: #fff;
+    line-height: 17px;
+    text-align: left;
+}
+
+
+.location_status:before {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    width: 15px;
+    height: 10px;
+    background: url(https://res.kurly.com/mobile/ico/2006/ico_location_picker.svg) no-repeat 50% 50%;
+}
+
+.location_status .addr {
+    overflow: hidden;
+    width: 100%;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+

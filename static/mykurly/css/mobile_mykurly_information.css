@@ -1,0 +1,238 @@
+body, button, input, select, textarea {
+    font-family: -apple-system,blinkmacsystemfont,applesdgothicneo,apple sd gothic neo,Helvetica,noto sans kr,malgun gothic,맑은 고딕,sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0;
+}
+
+.user_form {
+    min-height: 100%;
+    padding: 0 0 70px;
+    color: #333;
+    line-height: 1.5;
+    letter-spacing: 0;
+}
+
+.section_join {
+    background-color: #fff;
+}
+
+
+
+.user_reg .join_cell {
+    padding: 0 20px;
+}
+
+.user_reg .tit {
+    overflow: hidden;
+    padding: 18px 0 7px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+}
+
+.user_reg .desc {
+    width: 100%;
+    color: #666;
+}
+
+.user_reg .join_cell:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    text-indent: -9999px;
+    clear: both;
+}
+
+.user_reg .desc:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+
+input[type=search], input[type=email], input[type=password], input[type=text], input[type=number], textarea, .field_address .txt_address, .birth_day {
+    width: 100%;
+    height: 48px;
+    padding: 0 11px 1px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+}
+
+
+
+.join_submit {
+    padding: 19px 20px 0;
+}
+
+.user_reg .btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+}
+
+.user_reg .btn {
+    display: block;
+    width: 100%;
+    height: 48px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 46px;
+    text-align: center;
+    outline: none;
+}
+
+div.fixed_parent {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    bottom: 49px;
+    width: 100%;
+    height: 80px;
+    padding: 12px;
+    background: linear-gradient(0deg,rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100% );
+}
+
+div.fixed_parent .btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+}
+
+div.fixed_parent .btn {
+    display: block;
+    width: 100%;
+    height: 56px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+}
+
+.link_hack {
+    position: relative;
+    margin: 12px 20px 0 0;
+    padding-bottom: 67px;
+}
+
+.link_more {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    padding-right: 11px;
+    background: url(https://res.kurly.com/mobile/service/common/1908/ico_arrow_5f0080_16x22.png) no-repeat 100% 2px;
+    background-size: 8px 12px;
+    font-size: 14px;
+    color: #5f0080;
+    line-height: 18px;
+}
+
+.user_hack {
+    margin-top: 10px;
+    background-color: #fff;
+}
+
+.user_hack .section_head {
+    padding: 0 20px 20px;
+    border-bottom: 10px solid #f4f4f4;
+}
+
+.user_reg .desc {
+    width: 100%;
+    color: #666;
+}
+
+.user_hack .section_head .emph {
+    display: block;
+    padding: 19px 0 12px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #5f0080;
+    line-height: 18px;
+}
+
+.user_reg .tit {
+    overflow: hidden;
+    padding: 18px 0 7px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+    line-height: 20px;
+}
+
+.user_reg .desc {
+    width: 100%;
+    color: #666;
+}
+
+.user_reg .join_cell:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    text-indent: -9999px;
+    clear: both;
+}
+
+#hack_reason {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: url(https://res.kurly.com/mobile/ico/1908/ico_arrow_30x20.png) no-repeat 95% 50%;
+    background-size: 15px 10px;
+    font-size: 14px;
+    color: #333;
+    line-height: 50px;
+    text-indent: 8px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.select_arrow {
+    display: block;
+    position: relative;
+    width: 100%;
+    pointer-events: none;
+}
+
+.user_reg .desc:after {
+    content: "";
+    display: block;
+    overflow: hidden;
+    clear: both;
+}
+.select_arrow:after {
+    content: "";
+    position: absolute;
+    right: 1px;
+    bottom: 0;
+    width: 40px;
+    height: 40px;
+    background: url(https://res.kurly.com/mobile/service/goodsview/2011/ico_drop_up.svg) no-repeat 50% 50%;
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.user_hack .section_foot {
+    padding: 30px 20px 20px;
+}

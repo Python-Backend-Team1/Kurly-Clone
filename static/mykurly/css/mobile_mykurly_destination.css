@@ -1,0 +1,314 @@
+body, button, input, select, textarea {
+    font-family: -apple-system,blinkmacsystemfont,applesdgothicneo,apple sd gothic neo,Helvetica,noto sans kr,malgun gothic,맑은 고딕,sans-serif;
+    line-height: 1;
+    font-size: 14px;
+    color: #333;
+    letter-spacing: 0;
+}
+
+
+
+.destination_add {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 50px;
+    padding: 2px 20px 0;
+    font-size: 16px;
+    color: #5f0080;
+    line-height: 50px;
+    text-align: right;
+}
+
+.section_destination {
+    padding-bottom: 48px;
+}
+
+.section_destination .info {
+    display: none;
+    height: 44px;
+    padding: 13px 0 0 20px;
+    background-color: #fafafa;
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+}
+
+.section_destination .info:before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 1px;
+    background-image: url(https://res.kurly.com/mobile/ico/2006/ico_info_v4.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0 50%;
+    vertical-align: -6px;
+}
+
+.section_destination .list {
+    background-color: #fff;
+    --safe-area-inset-bottom: env(safe-area-inset-bottom);
+    padding-bottom: calc(var(--safe-area-inset-bottom));
+}
+
+.section_destination .list.type_select li {
+    padding-left: 36px;
+}
+
+.section_destination .list li {
+    position: relative;
+    margin: 0 20px;
+    padding: 21px 44px 16px 0;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.section_destination .list label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+}
+
+label {
+    font-size: 16px;
+    line-height: 24px;
+    color: #333;
+}
+
+.skin_checkbox input[type=radio], input[type=checkbox] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+input[type=radio]:checked+.ico, input[type=radio]:checked {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+}
+
+/* input[type=radio]:checked+.ico:after, input[type=radio]:checked:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    margin: -3px 0 0 -3px;
+    border-radius: 100%;
+    background-color: #fff;
+} */
+
+.skin_checkbox input[type=radio]:checked+.ico {
+    border: none;
+    background-color: transparent;
+}
+
+.skin_checkbox input:checked[type=radio]+.ico, input[type=checkbox]:checked+.ico {
+    background-image: url(https://res.kurly.com/mobile/service/common/2006/ico_checkbox_checked.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%;
+}
+
+.section_destination .list label .ico {
+    width: 24px;
+    height: 24px;
+}
+
+.skin_checkbox input[type=radio]+.ico {
+    border: none;
+    background-color: transparent;
+}
+
+.skin_checkbox input[type=radio]+.ico, input[type=checkbox]+.ico {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border: 0;
+    background-image: url(https://res.kurly.com/mobile/service/common/2006/ico_checkbox.svg);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%;
+    vertical-align: -7px;
+}
+
+input[type=radio]:checked+.ico {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+}
+
+input[type=radio]:checked+.ico, input[type=radio]:checked {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+}
+
+input[type=radio]+.ico {
+    display: inline-block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    border-radius: 100%;
+    vertical-align: -5px;
+}
+
+.section_destination .list .address .badge_default {
+    margin: -1px 0 10px;
+}
+
+.badge_default {
+    display: inline-block;
+    height: 22px;
+    padding: 1px 8px 0;
+    border-radius: 11px;
+    font-weight: 600;
+    font-size: 12px;
+    color: #666;
+    line-height: 22px;
+    background-color: #f7f7f7;
+    vertical-align: top;
+}
+
+.section_destination .list .address .addr {
+    font-size: 16px;
+    color: #333;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    word-break: break-all;
+}
+
+.section_destination .list .user {
+    padding-top: 2px;
+    font-size: 0;
+    line-height: 0;
+}
+
+.section_destination .list .user .name, .section_destination .list .user .phone {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 57%;
+    font-size: 14px;
+    color: #666;
+    line-height: 20px;
+    letter-spacing: -.3px;
+    vertical-align: top;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.section_destination .list .user .middot {
+    display: inline-block;
+    width: 1px;
+    height: 12px;
+    margin: 0 8px;
+    background-color: #ddd;
+}
+
+.section_destination .list .user .delivery.star {
+    color: #5f0080;
+}
+
+.section_destination .list .user .delivery {
+    display: block;
+    padding-top: 4px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 600;
+}
+
+.section_destination .list .btn_modify .ico {
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    border: 0;
+    background-image: url(https://res.kurly.com/mobile/ico/2006/ico_modify_x2.png);
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 50% 50%;
+    font-size: 0;
+    line-height: 0;
+}
+
+.section_destination .modify {
+    padding: 4px 20px 0;
+}
+
+.section_destination .modify .field {
+    padding-top: 23px;
+}
+
+.section_destination .modify .address {
+    padding-bottom: 11px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -.3px;
+}
+
+input[type=search], input[type=email], input[type=password], input[type=text], input[type=number], textarea, .field_address .txt_address, .birth_day {
+    width: 100%;
+    height: 48px;
+    padding: 0 11px 1px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: 0;
+}
+
+.section_destination .modify .badge_default {
+    margin-bottom: 9px;
+}
+
+.section_destination .modify .label_block {
+    padding-bottom: 7px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+label.label_block {
+    display: block;
+}
+
+.section_destination .modify .btn.active {
+    margin-top: 24px;
+}
+
+.btn.active {
+    border: 1px solid #5f0081;
+    background-color: #5f0080;
+    color: #fff;
+}
+
+.btn {
+    width: 100%;
+    height: 48px;
+    border: 0;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 50px;
+    text-align: center;
+    outline: none;
+}

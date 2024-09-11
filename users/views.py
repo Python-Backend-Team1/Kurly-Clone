@@ -55,7 +55,7 @@ def login_view(request):
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             if user is not None:
                 login(request, user)
-                return redirect('product:product_list')  # 로그인 성공 후 상점 페이지로 이동
+                return redirect('home')  # 로그인 성공 후 상점 페이지로 이동
     else:
         form = UserLoginForm()
     

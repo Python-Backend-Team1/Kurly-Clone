@@ -1,0 +1,595 @@
+@charset "utf-8";
+
+html, body {
+    height: 100%;
+}
+
+.top_btn #m-go-top {
+    opacity: 0;
+    position: fixed;
+    z-index: 39;
+    right: 15px;
+    bottom: 65px;
+    width: 46px;
+    height: 46px;
+    border: 0;
+    background: url(https://res.kurly.com/mobile/service/common/1903/btn_pagetop_v3.png) no-repeat 50% 50%;
+    background-size: 46px 46px;
+    font-size: 0;
+    line-height: 0;
+    transition: all .5s;
+}
+
+#appBanner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    background-color: #fff;
+    text-align: center;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+#appBanner.hide {
+    height: 0;
+    overflow: hidden;
+}
+
+#appBanner .link {
+    display: block;
+    height: 38px;
+    border-bottom: 1px solid #f4f4f4;
+    overflow: hidden; /*말줄임*/
+    white-space: nowrap; /*말줄임*/
+    text-overflow: ellipsis; /*말줄임*/
+}
+
+#appBanner .txt {
+    padding: 0 32px;
+    background: url(https://res.kurly.com/mobile/ico/1908/btn_arrow_333_76x76.png) no-repeat 100% 50%;
+    background-size: 38px 38px;
+    font-size: 14px;
+    color: #333;
+    line-height: 40px;
+    letter-spacing: -.3px;
+}
+
+#appBanner .txt strong {
+    font-size: 15px;
+    font-weight: 700;
+    color: #5f0080;
+}
+
+/* 가상요소를 이용하지 않고 close 버튼을 만들 때 텍스트만 안보이게 처리 */
+#appBanner .btn_close {
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    right: 0;
+    width: 38px;
+    height: 38px;
+    border: 0;
+    background: url(https://res.kurly.com/mobile/ico/1908/btn_close_333_76x76_v2.png) no-repeat 50% 50%;
+    background-size: 38px 38px;
+    line-height: 0; /*텍스트만 안보이게*/
+    font-size: 0; /*텍스트만 안보이게*/
+    text-indent: -9999px; /*텍스트만 안보이게*/
+}
+
+#header_purple {
+    top: 38px;
+    -webkit-transition: -all .5s;
+    transition: all .5s;
+}
+
+#header_purple.move {
+    top: 0;
+}
+
+#header_purple .logo .gnbLogoContainer {
+	margin: 0 auto;
+}
+
+#header_purple .logo img {
+	display: block;
+    height: 40px;
+    margin: 5px auto 0;
+}
+
+.location_status {
+    display: none;
+    opacity: 0;
+    position: absolute;
+    right: 49px;
+    top: 68px;
+    max-width: 197px;
+    padding: 12px;
+    border-radius: 6px;
+    background-color: #b277fe;
+    font-size: 14px;
+    color: #fff;
+    line-height: 17px;
+    text-align: left;
+    -webkit-animation: visible .5s;
+    animation: visible .5s;
+}
+
+@-webkit-keyframes visible {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes visible {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.location_status:before {
+    content: "";
+    position: absolute;
+    right: 15px;
+    top: -10px;
+    width: 15px;
+    height: 10px;
+    background: url(https://res.kurly.com/mobile/ico/2006/ico_location_picker.svg) no-repeat 50% 50%;
+}
+
+.location_status .addr {
+    overflow: hidden;
+    width: 100%;
+    font-weight: 700;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+#lnbMenu {
+    position: fixed;
+	overflow: hidden;
+    top: 88px;
+    left: 0;
+    z-index: 12;
+    width: 100%;
+    height: 45px;
+    background: #fff url(https://res.kurly.com/mobile/service/common/1908/bg_e5e5e5_1x1.png) repeat-x 0 100%;
+    color: #333;
+    line-height: 1.5;
+    letter-spacing: 0;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+
+#lnbMenu.move {
+    top: 50px;
+}
+
+#lnbMenu .inner_lnb {
+    overflow-x: auto;
+	overflow-y: hidden;
+    width: 100%;
+    height: 1000px;
+}
+#lnbMenu ul { /*ul 가로 정렬*/
+	display: flex;
+	justify-content: space-around;
+}
+
+#lnbMenu.lnb_menu_main ul {
+	width: 100%; /*!important*/
+}
+
+#lnbMenu.lnb_menu_main li {
+	position: relative; /*.bg_on 밑줄 부모*/
+	display: block;
+	width: 100%;
+}
+
+
+#lnbMenu.lnb_menu_main a {
+	display: block;
+	overflow: hidden;
+    /* float: none; */
+    /* margin-left: 0; */
+    padding: 12px 0;
+    font-size: 16px;
+    line-height: 24px;
+    color: #666;
+    white-space: nowrap;
+    text-align: center;
+}
+
+#lnbMenu a.on {
+	font-weight: 600;
+    color: #5f0080;
+}
+
+#lnbMenu.lnb_menu_main a.on { 
+	color: #5f0080;
+}
+
+#lnbMenu.lnb_menu_main .bg_on { /*a태그 가로길이를 갖는 밑줄*/
+	position: absolute;
+	top: 41px;
+	left: 0px;
+    height: 3px;
+    background-color: #5f0080;
+}
+
+#kurly_main.page_main {
+    min-height: 100%;
+    background-color: #fff;
+}
+
+.page_main .list_goods {
+    letter-spacing: 0;
+}
+
+.page_main .list_goods li {
+	float: left;
+}
+
+.page_main .list_goods .thumb_goods {
+    display: block;
+    background-color: #eee;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.page_main .list_goods .thumb_goods .thumb {
+    display: block;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+}
+
+.page_main img {
+    width: 100%;
+    vertical-align: top;
+}
+
+.page_main .tit_goods {
+    padding: 16px 0 0 16px;
+}
+
+.page_main .tit_goods .ico {
+    padding-right: 17px;
+    background: url(https://res.kurly.com/mobile/service/main/2011/ico_title_link.svg) no-repeat 100% 6px;
+    background-size: 17px 17px;
+}
+
+/* 처음 나오는 이 상품 어때요만 padding-top 삭제 */
+.page_main div:nth-child(3) .tit_goods {
+    padding-top: 0;
+}
+
+.page_main .tit_goods .tit {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0;
+}
+
+.page_main .tit_goods .name {
+    display: block;
+    padding: 16px 0;
+}
+
+/* main_type1 : 이 상품 어때요? */
+.main_type1 .list_goods {
+    padding: 0 16px;
+}
+
+.main_type1 .list_goods li {
+    float: left;
+    width: 43.5%;
+}
+
+.main_type1 .list_goods .thumb_goods {
+    width: 100%;
+}
+
+.main_type1 .list_goods .info_goods {
+    height: 108px;
+}
+
+.main_type1 .list_goods .name {
+    display: block;
+    margin-top: 8px;
+    padding-right: 8px;
+    max-height: 38px; /*2줄 말줄임*/
+    overflow: hidden; /*2줄 말줄임*/
+    text-overflow: ellipsis; /*2줄 말줄임*/
+    display: -webkit-box; /*2줄 말줄임*/
+    -webkit-line-clamp: 2; /*2줄 말줄임*/
+    -webkit-box-orient: vertical; /*2줄 말줄임*/
+    word-wrap: break-word;
+}
+
+.main_type1 .list_goods .name .txt {
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.main_type1 .list_goods .price {
+    display: block;
+    padding-top: 4px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden; /*한 줄 말줄임*/
+    white-space: nowrap; /*한 줄 말줄임*/
+    text-overflow: ellipsis; /*한 줄 말줄임*/
+}
+
+.main_type1 .list_goods .dc {
+    padding-right: 5px;
+    color: #fa622f;
+}
+
+.main_type1 .list_goods .cost {
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    padding-top: 1px;
+    color: #999;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-decoration: line-through;
+}
+
+.page_main .bg {
+    background-color: #f7f7f7;
+}
+
+.main_type2 {
+    padding-bottom: 32px;
+}
+
+.main_type2 .list_goods {
+    padding: 0 16px;
+}
+
+/* main_event 안에 main_type2가 있음 */
+.main_event .list_goods li {
+    float: left;
+    width: 100%;
+    padding-top: 16px;
+    font-size: 0;
+}
+
+.main_event .list_goods::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+.main_event .list_goods li:first-child {
+    padding-top: 0;
+}
+
+.main_event .list_goods .thumb_goods {
+    float: left;
+    width: 27%; /*이미지를 왼쪽에 둥둥 띄운 후 width 100% 중 27% 차지*/
+}
+
+.main_event .list_goods .info_goods {
+    position: relative;
+    float: left;
+    width: 72.7%; /*왜 73%가 아니라 72.7%일까*/
+}
+
+.main_event .list_goods .inner_info {
+    position: absolute;
+    top: 52%; /*수직 정렬: 1. 우선 52%*/
+    left: 0;
+    width: 100%;
+    padding-left: 22px;
+    transform: translate(0%, -50%); /*수직 정렬: 2. 50%에서 -50%하면 수직 정렬됨*/
+    -webkit-transform: translate(0%, -50%); /*webkit 계열 브라우저에서도 적용*/
+}
+
+.main_event .list_goods .name .txt {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.main_event .list_goods .desc {
+    display: block;
+    padding-top: 4px;
+}
+
+.main_event .list_goods .desc .txt {
+    font-size: 14px;
+    color: #999;
+    line-height: 20px;
+}
+
+.bnr_main .link {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #eee;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.bnr_main .inner_link {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    padding: 0 15px;
+    transform: translate(0%, -50%);
+}
+
+
+#footer {
+    padding-bottom: 110px;
+    background-color: #f4f4f4;
+    color: #999;
+}
+
+#footer .list_menu {
+    overflow: hidden;
+    padding: 18px 0 0 15px;
+}
+
+#footer .list_menu li {
+    float: left;
+    min-width: 62px;
+}
+
+#footer .list_menu .notice {
+    clear: both;
+}
+
+#footer .list_menu .link {
+    display: block;
+    overflow: hidden;
+    height: 32px;
+    line-height: 16px;
+    padding-top: 8px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#footer .list_sns {
+    overflow: hidden;
+    padding: 3px 0 0 9px;
+}
+
+#footer .list_sns .link {
+    overflow: hidden;
+    float: left;
+    width: 37px;
+    height: 37px;
+    line-height: 0;
+    font-size: 0; /*글씨 안보이게*/
+    text-indent: -9999px; /*글씨 레이아웃 밖으로 밀기*/
+}
+
+#footer .list_sns .ico_instagram {
+    background: url(https://res.kurly.com/mobile/service/common/1903/ico_instagram.png) no-repeat 50% 50%;
+    background-size: 25px 25px;
+}
+
+#footer .list_sns .ico_fb {
+    background: url(https://res.kurly.com/mobile/service/common/1903/ico_fb.png) no-repeat 50% 50%;
+    background-size: 25px 25px;
+}
+
+#footer .list_sns .ico_blog {
+    background: url(https://res.kurly.com/mobile/service/common/1903/ico_blog.png) no-repeat 50% 50%;
+    background-size: 25px 25px;
+}
+
+#footer .list_sns .ico_post {
+    background: url(https://res.kurly.com/mobile/service/common/1903/ico_naverpost.png?v=1) no-repeat 50% 50%;
+    background-size: 25px 25px;
+}
+
+#footer .list_sns .ico_youtube {
+    background: url(https://res.kurly.com/mobile/service/common/1903/ico_youtube.png) no-repeat 50% 50%;
+    background-size: 25px 25px;
+}
+
+#footer .customer {
+    padding: 14px 10px 0 15px;
+}
+
+#footer .customer .tit { /*고객행복센터*/
+    display: block;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+#footer .customer .tel {
+    padding-top: 3px;
+}
+
+#footer .customer .link {
+    font-size: 20px;
+    color: #5f0080;
+    line-height: 24px;
+}
+
+#footer .customer .txt {
+    padding-top: 3px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+#footer .kakaotalk {
+    position: relative;
+    margin: 0 0 0 15px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+#footer .kakaotalk .link {
+    color: #5f0080;
+}
+
+#plusfriend-addfriend-button a {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#plusfriend-addfriend-button img {
+    display: none;
+}
+
+#footer .company {
+    padding: 23px 0 0 15px;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+#footer .company .bar {
+    padding: 0 1px 0 2px;
+}
+
+#footer .company .link {
+    color: #5f0080;
+}
+
+#footer .certification .desc {
+    display: block;
+    overflow: hidden;
+    margin-top: 23px;
+}
+
+#footer .certification .logo {
+    float: left;
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+}
+
+#footer .certification .eprivacy {
+    margin-top: 12px;
+}
+
+
+
+

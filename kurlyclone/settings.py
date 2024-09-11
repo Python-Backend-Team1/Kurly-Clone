@@ -104,8 +104,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # collectstatic으로 수집된 파일 경로
+
+# 개발 중 사용하는 정적 파일의 소스 디렉터리 설정
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]  # 'staticfiles' 대신 'static' 폴더를 사용
 
 
 # Media files (Uploaded by users)
