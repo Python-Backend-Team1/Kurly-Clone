@@ -19,21 +19,6 @@ body {
     right: 20px;
 }
 
-.top-right-buttons a button {
-    margin-left: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.top-right-buttons a button:hover {
-    background-color: #45a049;
-}
-
 .top-right-buttons a {
     margin-left: 10px;
 }
