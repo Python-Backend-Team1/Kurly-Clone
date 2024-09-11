@@ -10,17 +10,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('product/', include('product.urls', namespace='product')),
     path('users/', include('users.urls')),
-    path('login/', login_view, name='login'),
-    path('home/', home_view, name='home'),
-    path('signup/', signup_view, name='signup'),                                                         # 회원가입 URL 추가
-    path('', home_view, name='home'),                      
-    path('password_reset/', CustomPasswordResetView.as_view(), name='password_reset'),                   # 루트 URL 패턴 추가
-    path('find-username/', find_username_view, name='find_username'),                                    #아이디찾기
-    path('password_reset/', auth_views.PasswordResetView.as_view(), name='password_reset'),              #비밀번호 찾기 
-    path('password_reset/done/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
-    path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
-    path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
+    path('order/', include('order.urls')),
     path('cart/', include('cart.urls')), 
+    path('', home_view, name='home'), #기본 주소
 ]
 
 if settings.DEBUG:

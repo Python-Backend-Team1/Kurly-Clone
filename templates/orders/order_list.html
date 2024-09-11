@@ -1,10 +1,19 @@
-<h1>My Orders</h1>
-<ul>
-  {% for order in orders %}
-    <li>
-      <a href="{% url 'order_detail' order.id %}">
-        Order #{{ order.id }} - {{ order.get_status_display }} - ${{ order.total_price }}
-      </a>
-    </li>
-  {% endfor %}
-</ul>
+<!-- templates/orders/order_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+</head>
+<body>
+    <h1>Order List</h1>
+    <ul>
+        {% for order in orders %}
+            <li>Order ID: {{ order.id }} | Customer: {{ order.user.username }} | Status: {{ order.order_status }}</li>
+        {% empty %}
+            <li>No orders available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
