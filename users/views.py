@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from .forms import UserLoginForm
 from django.shortcuts import render
@@ -118,3 +118,11 @@ class CustomPasswordResetView(PasswordResetView):                        #비밀
 def product_list(request):
     products = Product.objects.all()  # 상품 리스트 조회
     return render(request, 'your_template.html', {'products': products})
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, product_id=product_id)
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'product:product_detail.html', context)
