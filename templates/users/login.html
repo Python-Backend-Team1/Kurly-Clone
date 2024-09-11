@@ -1,3 +1,26 @@
+<<<<<<< develop_product
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>로그인</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">로그인</button>
+    </form>
+    <div class="form-group" style="margin-top: 20px;">
+        <a href="{% url 'password_reset' %}" style="margin-right: 20px;">비밀번호 찾기</a>
+        <a href="{% url 'find_username' %}">아이디 찾기</a>
+    </div>
+</div>
+</body>
+=======
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -77,3 +100,4 @@
 </body>
 </html>
 
+>>>>>>> main
