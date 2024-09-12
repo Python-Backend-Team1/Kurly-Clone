@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'product',
-#     'category',
+    'django.contrib.humanize',
+    'mathfilters',
     'order',
 #     'orderitem',
 #     'reviews'

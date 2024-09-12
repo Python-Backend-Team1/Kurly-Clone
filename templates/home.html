@@ -1,25 +1,731 @@
 {% extends 'base.html' %}
-
-{% block title %}마켓컬리{% endblock %}
-
 {% block content %}
-<head>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
+{% load static %}
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'main/css/contents.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/visual.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/swiper-bundle.css' %}">
+        <link rel="stylesheet" href="{% static 'main/css/swiper-bundle.min.css' %}">
+        <script defer src="{% static 'main/js/contents.js' %}"></script>
+        <script defer src="{% static 'main/js/visual.js' %}"></script>
+        <script src="{% static 'main/js/swiper-bundle.js' %}"></script>
+        <script src="{% static 'main/js/swiper-bundle.min.js' %}"></script>
+        <SCRIPT LANGUAGE="JavaScript">
+        </SCRIPT>
+    </head>
+        <div id="visual">
+            <h2 class="blind">마켓컬리 메인</h2>
+            <div class="swipe">
+                <ul class="promotions">
+                    <li data-index="1" class="slide_list">
+                        <a href="#" class="thumb" 
+                           style="background-image: url({% static 'main/img/LDH.png' %}); background-color: #ccc;">
+                        </a> <!-- 이미지 오류 시 배경색으로 대체 -->
+                    </li>
+                    <li data-index="2" class="slide_list">
+                        <a href="#" class="thumb" 
+                           style="background-image: url({% static 'main/img/LDH.png' %}); background-color: #ccc;">
+                        </a> <!-- 이미지 오류 시 배경색으로 대체 -->
+                    </li>
+                    <li data-index="3" class="slide_list">
+                        <a href="#" class="thumb" 
+                           style="background-image: url({% static 'main/img/LDH.png' %}); background-color: #ccc;">
+                        </a> <!-- 이미지 오류 시 배경색으로 대체 -->
+                    </li>
+                    <li data-index="4" class="slide_list">
+                        <a href="#" class="thumb" 
+                           style="background-image: url({% static 'main/img/LDH.png' %}); background-color: #ccc;">
+                        </a> <!-- 이미지 오류 시 배경색으로 대체 -->
+                    </li>
+                    <li data-index="5" class="slide_list">
+                        <a href="#" class="thumb" 
+                           style="background-image: url({% static 'main/img/LDH.png' %}); background-color: #ccc;">
+                        </a> <!-- 이미지 오류 시 배경색으로 대체 -->
+                    </li>
+                </ul>
 
-    <div class="product-list">
-        {% for product in products %}
-            <div class="product-item">
-                <a href="{{ product.get_absolute_url }}">
-                    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="width: 200px; height: 200px;">
-                    <h2>{{ product.name }}</h2>
-                </a>
-                <p>{{ product.description }}</p>
-                <p>가격: {{ product.price }} 원</p>
+                <div class="controls_direction" style="display: none;">
+                <!-- bg url 처리 -->
+                    <a href="prev">이전으로</a>
+                    <a href="next">다음으로</a>
+                </div>
             </div>
-        {% empty %}
-            <p>등록된 상품이 없습니다.</p>
-        {% endfor %}
-    </div>
+        </div>
+        <!-- id="visual" -->
+
+            <div class="top_btn">
+                <button id="go-top" alt="맨 위로가기"></button>
+            </div>
+
+            <!-- 우선은 bg color 있는 것과 없는 2가지 types만 추가  -->
+            <!-- class = "main_type1은 bg 없음" -->
+            <div class="main_type1">
+            <!-- type1:  -->
+                <div class="product_list">
+                <!-- 상품 추천 -->
+                    <div class="tit_goods">
+                        <h3 class="tit">
+                            <span class="name">
+                            이 상품 어때요?
+                            </span>
+                            <!-- 아이콘 없는 버전, h3에 링크 없음 -->
+                        </h3>
+                    </div>
+                    <!-- list_goods는 마켓컬리와 똑같이 html 파일에서 스타일함 -->
+                    <div class="list_goods">
+                        <div class="bx_wrapper" style="max-width: 1054px; margin: 0 auto;">
+                            <div class="vx-viewport swiper-container first" style="width: 100%; height: 506px; position: relative; overflow: hidden;">
+                                <!-- overflow: hidden 임시로 삭제 -->
+                                <ul data-title="이 상품 어때요?" data-section="today_recommendation" class="list_goods_ul swiper-wrapper"
+                                style="width: 2215%; position: relative; transition-duration: 0.5s; transform: translate3d(0, 0, 0);">
+                                <!--width: 2215%는 아직 뭔지 모르겠음  -->
+                                <!-- data-section과 data-name은 임시값 -->
+
+                                <!-- list data  -->
+                                    {% for product in products %}
+                                    <li data-index="{{ forloop.counter }}" data-name="today_recommendation" class="list_item swiper-slide">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_10.png" alt="SALE" class="ico">
+                                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="thumb" 
+                                                style="background-image: url('{{ product.image.url }}');">
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">{{ product.name }}</a>
+                                            </span>
+                                            <span class="price">{{ product.price }}원</span>
+                                        </div>
+                                        <form action="{% url 'cart:add_to_cart' product.id %}" method="POST">
+                                            {% csrf_token %}
+                                            <button type="submit" class="product-function css-13xu5fn e17x72af0">
+                                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <!-- SVG 아이콘 내용 -->
+                                                </svg>
+                                                담기
+                                            </button>
+                                        </form>
+                                    </li>
+                                    {% endfor %}
+                                    <li data-index="2" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/1514257155111l0.jpg')">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                이스라엘산 스위티 1개
+                                            </a>
+                                        </span>
+                                        <span class="price">1,870원</span>
+                                        <span class="cost">2,200원</span>
+                                    </div>
+                                    </li>
+                                    <li data-index="3" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249x; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/1510134053904l0.jpg');">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                [어부네] 생관자 2종(냉장)
+                                            </a>
+                                        </span>
+                                        <span class="price">7,310원</span>
+                                        <span class="cost">8,600원</span>
+                                    </div>
+                                    </li>
+                                    <li data-index="4" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                [퀸즈프레시] 프리미엄 샐러드 3종
+                                            </a>
+                                        </span>
+                                        <span class="price">6,555원</span>
+                                        <span class="cost">6,900원</span>
+                                    </div>
+                                    </li>
+                                    <li data-index="5" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                [퀸즈프레시] 프리미엄 샐러드 3종
+                                            </a>
+                                        </span>
+                                        <span class="price">6,555원</span>
+                                        <span class="cost">6,900원</span>
+                                    </div>
+                                    </li>
+                                    <li data-index="6" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                [퀸즈프레시] 프리미엄 샐러드 3종
+                                            </a>
+                                        </span>
+                                        <span class="price">6,555원</span>
+                                        <span class="cost">6,900원</span>
+                                    </div>
+                                    </li>
+                                    <li data-index="7" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                [퀸즈프레시] 프리미엄 샐러드 3종
+                                            </a>
+                                        </span>
+                                        <span class="price">6,555원</span>
+                                        <span class="cost">6,900원</span>
+                                    </div>
+                                    </li>
+                                    <li data-index="8" data-name="today_recommendation" class="list_item swiper-slide"
+                                    style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                    <a class="thumb_goods">
+                                        <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                        style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <span class="name">
+                                            <a class="txt">
+                                                [퀸즈프레시] 프리미엄 샐러드 3종
+                                            </a>
+                                        </span>
+                                        <span class="price">6,555원</span>
+                                        <span class="cost">6,900원</span>
+                                    </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+                            <!-- bx-viewport 끝 -->
+                            <div class="bx_controls_direction">
+                                <a id="swiper-prev1" class="bx-prev swiper-button-prev"><span class="blind">이전으로</span></a>
+                                <a id="swiper-next1" class="bx-next swiper-button-next"><span class="blind">이후로</span></a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- class="main_type1" 끝 -->
+
+            <!-- class ="main_type2" -->
+            <div class="main_type2 bg">
+                <div class="main_event">
+                    <div class="tit_goods">
+                        <h3 class="tit">
+                        <!-- 아이콘 있는 버전, h3에 링크 있음 -->
+                            <a href="#" class="name">
+                                <span class="ico">이벤트 소식</span>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="list_goods">
+                        <ul data-title="이벤트 소식" data-section="event" class="list_goods_ul">
+                            <li>
+                                <li data-index="1">
+                                    <a class="thumb_goods">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg==" alt="상품이미지" class="thumb"
+                                        style="background-image: url({% static 'main/img/event.jpeg' %});">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <div class="inner_info">
+                                            <span class="name">
+                                                <a class="txt">화장지 최대 40% 할인</a>
+                                            </span>
+                                            <span class="desc">
+                                                <a class="txt">미리미리 쟁여두세요!</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </li>
+                            <li>
+                                <li data-index="2">
+                                    <a class="thumb_goods">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg==" alt="상품이미지" class="thumb"
+                                        style="background-image: url({% static 'main/img/event.jpeg' %});">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <div class="inner_info">
+                                            <span class="name">
+                                                <a class="txt">종근당건강 최대 27% 할인</a>
+                                            </span>
+                                            <span class="desc">
+                                                <a class="txt">국민 유산균, 락토핏</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </li>
+                            <li>
+                                <li data-index="3">
+                                    <a class="thumb_goods">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg==" alt="상품이미지" class="thumb"
+                                        style="background-image: url({% static 'main/img/event.jpeg' %});">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <div class="inner_info">
+                                            <span class="name">
+                                                <a class="txt">바스용품 최대 35% 할인</a>
+                                            </span>
+                                            <span class="desc">
+                                                <a class="txt">나만의 힐링타임</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- class ="main_type2" 끝 -->
+
+            <!-- .main_type1 반복 -->
+            <div class="main_type1">
+                <!-- type1:  -->
+                    <div class="product_list">
+                    <!-- 상품 추천 -->
+                        <div class="tit_goods">
+                            <h3 class="tit">
+                                <span class="name">
+                                이 상품 어때요?
+                                </span>
+                                <!-- 아이콘 없는 버전, h3에 링크 없음 -->
+                            </h3>
+                        </div>
+                        <!-- list_goods는 마켓컬리와 똑같이 html 파일에서 스타일함 -->
+                        <div class="list_goods">
+                            <div class="bx_wrapper" style="max-width: 1054px; margin: 0 auto;">
+                                <div class="vx-viewport swiper-container second" style="width: 100%; height: 506px; position: relative; overflow: hidden;">
+                                    <ul data-title="이 상품 어때요?" data-section="today_recommendation" class="list_goods_ul swiper-wrapper"
+                                    style="width: 2215%; position: relative; transition-duration: 0.5s; transform: translate3d(0, 0, 0);">
+                                    <!-- data-section과 data-name은 임시값 -->
+
+                                    <!-- list data  -->
+                                        <li data-index="1" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_10.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/1466488979157l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [버크셔세상] 버크셔K 흑돼지 앞다리살 500g(냉장)
+                                                </a>
+                                            </span>
+                                            <span class="price">10,800원</span>
+                                            <span class="cost">12,000원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="2" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/1514257155111l0.jpg')">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    이스라엘산 스위티 1개
+                                                </a>
+                                            </span>
+                                            <span class="price">1,870원</span>
+                                            <span class="cost">2,200원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="3" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249x; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_15.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/1510134053904l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [어부네] 생관자 2종(냉장)
+                                                </a>
+                                            </span>
+                                            <span class="price">7,310원</span>
+                                            <span class="cost">8,600원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="4" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [퀸즈프레시] 프리미엄 샐러드 3종
+                                                </a>
+                                            </span>
+                                            <span class="price">6,555원</span>
+                                            <span class="cost">6,900원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="5" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [퀸즈프레시] 프리미엄 샐러드 3종
+                                                </a>
+                                            </span>
+                                            <span class="price">6,555원</span>
+                                            <span class="cost">6,900원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="6" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [퀸즈프레시] 프리미엄 샐러드 3종
+                                                </a>
+                                            </span>
+                                            <span class="price">6,555원</span>
+                                            <span class="cost">6,900원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="7" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [퀸즈프레시] 프리미엄 샐러드 3종
+                                                </a>
+                                            </span>
+                                            <span class="price">6,555원</span>
+                                            <span class="cost">6,900원</span>
+                                        </div>
+                                        </li>
+                                        <li data-index="8" data-name="today_recommendation" class="list_item swiper-slide"
+                                        style="float: left; position: relative; width: 249px; margin-right: 18px;">
+                                        <a class="thumb_goods">
+                                            <img src="https://img-cf.kurly.com/shop/data/my_icon/icon_save_5.png" alt="SALE" class="ico">
+                                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG0AAACRCAQAAABjof6/AAAANUlEQVR4Ae3BgQAAAADDoPtTT+AI1QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAnfAsAAe7+tYwAAAAASUVORK5CYII=" alt="상품이미지" class="thumb"
+                                            style="background-image: url('https://img-cf.kurly.com/shop/data/goods/160868697126l0.jpg');">
+                                            <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                        </a>
+                                        <div class="info_goods">
+                                            <span class="name">
+                                                <a class="txt">
+                                                    [퀸즈프레시] 프리미엄 샐러드 3종
+                                                </a>
+                                            </span>
+                                            <span class="price">6,555원</span>
+                                            <span class="cost">6,900원</span>
+                                        </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <!-- bx-viewport 끝 -->
+                                <div class="bx_controls_direction">
+                                <!-- 버튼을 누르면 오른쪽으로 1068px 만큼 이동, 끝에 닿으면 버튼 사라짐 -->
+                                    <a id="swiper-prev2" class="bx-prev swiper-button-prev"><span class="blind">이전으로</span></a>
+                                    <a id="swiper-next2" class="bx-next swiper-button-next"><span class="blind">이후로</span></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+            </div>
+            <!-- .main_type1 반복 끝-->
+
+            <!-- .main_type2 반복-->
+            <div class="main_type2 bg">
+                <div class="main_event">
+                    <div class="tit_goods">
+                        <h3 class="tit">
+                        <!-- 아이콘 있는 버전, h3에 링크 있음 -->
+                            <a href="#" class="name">
+                                <span class="ico">이벤트 소식</span>
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="list_goods">
+                        <ul data-title="이벤트 소식" data-section="event" class="list_goods_ul">
+                            <li>
+                                <li data-index="1">
+                                    <a class="thumb_goods">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg==" alt="상품이미지" class="thumb"
+                                        style="background-image: url({% static 'main/img/event2.jpeg' %})">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <div class="inner_info">
+                                            <span class="name">
+                                                <a class="txt">화장지 최대 40% 할인</a>
+                                            </span>
+                                            <span class="desc">
+                                                <a class="txt">미리미리 쟁여두세요!</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </li>
+                            <li>
+                                <li data-index="2">
+                                    <a class="thumb_goods">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg==" alt="상품이미지" class="thumb"
+                                        style="background-image: url({% static 'main/img/event2.jpeg' %})">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <div class="inner_info">
+                                            <span class="name">
+                                                <a class="txt">종근당건강 최대 27% 할인</a>
+                                            </span>
+                                            <span class="desc">
+                                                <a class="txt">국민 유산균, 락토핏</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </li>
+                            <li>
+                                <li data-index="3">
+                                    <a class="thumb_goods">
+                                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAF4AAABeCAQAAAAA22vlAAAAAXNSR0IArs4c6QAAACdJREFUeAHtwQENAAAAwiD7p34PBwwAAAAAAAAAAAAAAAAAAAAA4FpFZgABkfKClwAAAABJRU5ErkJggg==" alt="상품이미지" class="thumb"
+                                        style="background-image: url({% static 'main/img/event2.jpeg' %})">
+                                        <!-- 상품 이미지 임시값임. src는 데이터로 받아오기 -->
+                                    </a>
+                                    <div class="info_goods">
+                                        <div class="inner_info">
+                                            <span class="name">
+                                                <a class="txt">바스용품 최대 35% 할인</a>
+                                            </span>
+                                            <span class="desc">
+                                                <a class="txt">나만의 힐링타임</a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- .main_type2 반복 끝-->
+
+            <!-- 인스타그램 고객 후기 -->
+            <div class="main_type3">
+                <div class="tit_goods">
+                    <h3 class="tit">인스타그램 고객 후기</h3>
+                </div>
+
+                <div class="list_goods">
+                    <div class="bx-wrapper"
+                    style="max-width: 1056px; margin: 0 auto;">
+                        <div class="bx-viewport swiper-container third"
+                        style="width: 100%; height: 176px; overflow: hidden; position: relative;">
+                            <ul data-title="인스타그램 고객 후기" data-section="instagram" class="list_goods_ul swiper-wrapper"
+                            style="width: 2715%; position: relative; transition-duration: 0.5s; transform: translate3d(0, 0, 0);">
+
+                                <li data-index="1" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta1.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="2" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta1.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="3" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta1.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="4" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta1.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="5" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta1.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="6" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta1.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="7" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta2.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="8" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta2.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="9" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta2.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="10" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta2.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="11" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta2.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+                                <li data-index="12" data-name="instagram" class="swiper-slide"
+                                style="float: left; position: relative; width: 175px;">
+                                    <a target="_blank" class="thumb_goods">
+                                        <img src="{% static 'main/img/insta2.jpeg' %}" alt="상품이미지" class="thumb">
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="bx_controls_direction">
+                            <a id="swiper-prev3" class="bx-prev swiper-button-prev"><span class="blind">이전으로</span></a>
+                            <a id="swiper-next3" class="bx-next swiper-button-next"><span class="blind">이후로</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bnr">
+                    <span class="txt">더 많은 고객 후기가 궁금하다면?</span>
+                    <a href="#" target="_blank">@INUkurly_regram</a>
+                </div>
+            </div>
+        </div>
+        <!-- id="contents" -->
+<script>
+       let type1 = new Swiper('.first', {
+
+        slidesPerView: 4,
+        slidesPerGroup: 4,
+
+        loopFillGroupWithBlank: true,
+
+        navigation: {
+            nextEl: '#swiper-next1',
+            prevEl: '#swiper-prev1',
+        },
+        });
+
+        let type1Dup = new Swiper('.second', {
+
+        slidesPerView: 4,
+        slidesPerGroup: 4,
+
+        loopFillGroupWithBlank: true,
+
+        navigation: {
+            nextEl: '#swiper-next2',
+            prevEl: '#swiper-prev2',
+        },
+        });
+
+        let type3 = new Swiper('.third', {
+
+        slidesPerView: 6,
+        slidesPerGroup: 1,
+
+        loopFillGroupWithBlank: true,
+
+        navigation: {
+            nextEl: '#swiper-next3',
+            prevEl: '#swiper-prev3',
+        },
+        });
+    </script>
 {% endblock %}
