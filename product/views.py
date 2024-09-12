@@ -20,7 +20,7 @@ def product_list(request, category_id=None):
         'products': products,
     }
 
-    return render(request, 'product/list.html', context)
+    return render(request, 'home.html', context)
 
 from django.shortcuts import get_object_or_404, render
 from .models import Product
