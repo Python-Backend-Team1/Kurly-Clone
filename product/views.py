@@ -20,7 +20,7 @@ def product_list(request, category_id=None):
         'products': products,
     }
 
-    return render(request, 'home.html', context)
+    return render(request, 'home.html', context)            # 상품 추가 후 홈 페이지로 되돌아감
 
 from django.shortcuts import get_object_or_404, render
 from .models import Product
