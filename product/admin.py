@@ -1,5 +1,6 @@
 from django.contrib import admin
 from product.models import Category, Product
+from users.models import CustomUser
 
 # Register your models here.
 
@@ -11,3 +12,8 @@ class CategoryAdmin(admin.ModelAdmin):
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['product_id', 'name', 'price']
     list_editable = ['price']
+
+@admin.register(CustomUser)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ['username', 'is_staff']
+    list_editable = ['is_staff']
